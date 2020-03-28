@@ -16,5 +16,5 @@ applications:
 # - my-application-logs
    - my-xsuaa
    - my-destination
-   - my-postgresql1
+#   - my-postgresql1
 #  - my-connectivity
