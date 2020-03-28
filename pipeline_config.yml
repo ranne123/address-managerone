@@ -19,10 +19,10 @@ stages:
     findbugsExcludesFile: '' #Path to findbugs exclude file
     pmdExcludes: '' # List or ANT style patterns
 
-#  integrationTests:
-#    credentials:
-#      - alias: ''
-#        credentialId: ''
+  integrationTests:
+    credentials:
+      - alias: 'MOCK_SYSTEM'
+        credentialId: 'MOCK_SYSTEM'
 
 #  s4SdkQualityChecks:
 #    jacocoExcludes:
@@ -31,10 +31,10 @@ stages:
 #      - ''
 
 #  productionDeployment:
-#    cfTargets:
-#      - org: 'org'
-#        space: 'Productive'
-#        apiEndpoint: 'https://'
-#        appName: 'appName'
-#        manifest: 'manifest.yml'
-#        credentialsId: 'credentialsId'
+    cfTargets:
+      - org: 'P1942815479trial_trial'
+        space: 'dev'
+        apiEndpoint: 'https://api.cf.eu10.hana.ondemand.com'
+        appName: 'address-manager'
+        manifest: 'manifest.yml'
+        credentialsId: 'github'
