@@ -10,7 +10,7 @@ applications:
     TARGET_RUNTIME: tomee
     JBP_CONFIG_SAPJVM_MEMORY_SIZES: 'metaspace:96m..'
     SET_LOGGING_LEVEL: '{ROOT: INFO, com.sap.cloud.sdk: INFO}'
-    ALLOW_MOCKED_AUTH_HEADER: true
+    ALLOW_MOCKED_AUTH_HEADER: false
     destinations: "[{name: 'ErpQueryEndpoint', url: 'http://s49sap.majul.com:8049', username: 'STUDENT015', password: 'Govinda@345'}]"
   services:
 # - my-application-logs
