@@ -19,7 +19,7 @@
     </parent>
 
     <properties>
-        <surefire.skipTests>false</surefire.skipTests>
+        <surefire.skipTests>true</surefire.skipTests>
         <surefire.forkCount>1</surefire.forkCount>
         <surefire.include>*</surefire.include>
         <surefire.exclude/>
