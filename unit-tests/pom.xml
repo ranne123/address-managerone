@@ -38,7 +38,7 @@
             <artifactId>address-manager-application</artifactId>
            <classifier>classes</classifier>
             <version>1.0-SNAPSHOT</version>
-
+<type>war</type>
            <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
