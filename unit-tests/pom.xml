@@ -38,13 +38,13 @@
             <artifactId>address-manager-application</artifactId>
             <classifier>classes</classifier>
             <version>1.0-SNAPSHOT</version>
-            <scope>test</scope>
+         <!--   <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
                     <artifactId>logback-classic</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions> -->
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
         <dependency>
