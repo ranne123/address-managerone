@@ -19,7 +19,7 @@
     </parent>
 
     <properties>
-        <surefire.skipTests>true</surefire.skipTests>
+        <surefire.skipTests>false</surefire.skipTests>
         <surefire.forkCount>1</surefire.forkCount>
         <surefire.include>*</surefire.include>
         <surefire.exclude/>
@@ -38,6 +38,7 @@
             <artifactId>address-manager-application</artifactId>
             <classifier>classes</classifier>
             <version>1.0-SNAPSHOT</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
