@@ -30,7 +30,8 @@ public class GetAllBusinessPartnersCommand extends CachingErpCommand<List<Busine
     public GetAllBusinessPartnersCommand(final BusinessPartnerService service) {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 GetAllBusinessPartnersCommand.class,
-                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutInMilliseconds(1000000000)));
+                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)));
+                        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
     }

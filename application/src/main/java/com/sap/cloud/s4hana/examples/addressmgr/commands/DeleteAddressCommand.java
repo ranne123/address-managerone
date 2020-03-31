@@ -19,7 +19,8 @@ public class DeleteAddressCommand extends ErpCommand<Integer> {
                                 final String businessPartnerId, final String addressId) {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 DeleteAddressCommand.class,
-                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutInMilliseconds(1000000000)));
+                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)));
+                        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
         this.businessPartnerId = businessPartnerId;

@@ -17,7 +17,8 @@ public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPart
     public GetSingleBusinessPartnerByIdCommand(final BusinessPartnerService service, final String id) {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 GetSingleBusinessPartnerByIdCommand.class,
-                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutInMilliseconds(100000000)));
+                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)));
+                        //withExecutionTimeoutInMilliseconds(100000000)));
 
         this.service = service;
         this.id = id;

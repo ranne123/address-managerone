@@ -17,7 +17,8 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
     public UpdateAddressCommand(final BusinessPartnerService service, final BusinessPartnerAddress addressToUpdate) {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 UpdateAddressCommand.class,
-                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutInMilliseconds(1000000000)));
+                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)));
+                        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
         this.addressToUpdate = addressToUpdate;
