@@ -9,8 +9,11 @@ node {
             script {
                 step ([$class: 'CopyArtifact',
                        projectName: 'address-manager/master',
-                       filter: "address-manager/application/target/address-*.war",
-                       target: 'address-manager/integration-tests/target']);
+                       filter:'build/address-*.war',
+                       selector: [$class: 'SpecificBuildSelector', buildNumber: '${BUILD_NUMBER}'],
+                       fingerprintArtifacts: true, flatten: true,
+
+                       target: './address-manager/integration-tests/target']);
             }
         }
 
