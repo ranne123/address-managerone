@@ -10,7 +10,7 @@ node {
                 step ([$class: 'CopyArtifact',
                        projectName: 'address-manager/master',
                        filter: "address-manager/application/target/address-*.war",
-                       target: 'address-manager/target']);
+                       target: 'address-manager/integration-tests/target']);
             }
         }
 
