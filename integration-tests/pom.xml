@@ -32,12 +32,18 @@
         <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory>
     </properties>
 
+
+
     <dependencies>
+
         <dependency>
+
             <groupId>com.sap.cloud.s4hana.examples</groupId>
             <artifactId>address-manager-application</artifactId>
-            <classifier>classes</classifier>
+           <classifier>classes</classifier>
             <version>1.0-SNAPSHOT</version>
+          <!--  <type>war</type> -->
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
