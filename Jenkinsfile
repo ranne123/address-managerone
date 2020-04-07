@@ -18,6 +18,7 @@ thirdEnvVar= 'THIRD_VAR'
         stage('backendIntegrationTests'){
              steps {
                 echo env.backendIntegEnvVar 
+                sh 'mvn clean install'
             }
         }
     }
