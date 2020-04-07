@@ -164,6 +164,7 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${jacoco.outputDirectory}</outputDirectory>
+                            <dataFile>${jacoco.destFile}</dataFile>
                         </configuration>
                     </execution>
                 </executions>
