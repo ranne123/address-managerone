@@ -6,8 +6,9 @@ void call(Map params) {
   echo "Current stage config: ${params.config}"
    
    //execute mvn clean install 
-    sh '../../jenkins/scripts/deliver.sh'
-   
+    //sh '../../jenkins/scripts/deliver.sh'
+  echo "Executing the mvn clean install " 
+   mavenExecute script: this, goals: 'clean install'
   //execute original stage as defined in the template
   params.originalStage()
 
