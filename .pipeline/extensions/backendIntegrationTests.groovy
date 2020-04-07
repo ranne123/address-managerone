@@ -6,7 +6,7 @@ void call(Map params) {
   echo "Current stage config: ${params.config}"
    
    //execute mvn clean install 
-   sh 'mvn clean install'
+   run('mvn clean install')
    
   //execute original stage as defined in the template
   params.originalStage()
