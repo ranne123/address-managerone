@@ -10,7 +10,7 @@ void call(Map params) {
   echo "Executing the mvn clean install " 
    mavenExecute script: this, goals: 'clean install'
   echo "Execute the tests ..."
-  mavenExecute script: this, goals: 'test'
+  mavenExecute script: this, goals: 'surefire:test'
   //execute original stage as defined in the template
   params.originalStage()
 
