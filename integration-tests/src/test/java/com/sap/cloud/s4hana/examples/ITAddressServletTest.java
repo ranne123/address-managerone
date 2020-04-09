@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 
 @RunWith( Arquillian.class )
-public class AddressServletTest
+public class ITAddressServletTest
 {
     private static final MockUtil mockUtil = new MockUtil();
     private static final String CREATE_BODY_TEMPLATE =
