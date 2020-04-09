@@ -73,7 +73,7 @@
         <dependency>
             <groupId>com.sap.cloud.s4hana.cloudplatform</groupId>
             <artifactId>security</artifactId>
-            <version>2.1.12</version>
+            <version>2.1.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
