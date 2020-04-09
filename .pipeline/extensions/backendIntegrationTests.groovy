@@ -10,7 +10,7 @@ void call(Map params) {
    //execute mvn clean install 
     //sh '../../jenkins/scripts/deliver.sh'
   echo "Executing the mvn clean install " 
-   mavenExecute script: this, goals: 'clean install test'
+   mavenExecute script: this, goals: 'clean install'
   
   echo "Executing the maven failsafe plugin ..."
   mavenExecute script: this, goals: 'failsafe:integration-test failsafe:verify'
