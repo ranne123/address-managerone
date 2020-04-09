@@ -5,6 +5,8 @@ void call(Map params) {
   //access config
   echo "Current stage config: ${params.config}"
    
+  echo "Execute maven verify ..."
+   mavenExecute script: this, goals: 'verify'
    //execute mvn clean install 
     //sh '../../jenkins/scripts/deliver.sh'
   echo "Executing the mvn clean install " 
