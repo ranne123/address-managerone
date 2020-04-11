@@ -15,9 +15,9 @@ steps:
 
 #Stage Specific Configurations
 stages:
-  configuration:
-    findbugsExcludesFile: '' #Path to findbugs exclude file
-    pmdExcludes: '' # List or ANT style patterns
+  mavenExecuteStaticCodeChecks:
+    spotBugsExcludeFilterFile: '' #Path to findbugs exclude file
+    pmdMaxAllowedViolations: '' # List or ANT style patterns
 
   backendIntegrationTests:
     credentials:
