@@ -35,8 +35,6 @@
       <!--  <jacoco.destFile>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.destFile>
         <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory> -->
     </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>com.sap.cloud.s4hana.frameworks</groupId>
