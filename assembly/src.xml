@@ -1,0 +1,35 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+  <id>applicationclasses</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <moduleSets>
+    <moduleSet>
+      <useAllReactorProjects>true</useAllReactorProjects>
+      <includes>
+        <include>c:/users/user/address-manager/application/src/main/java/com.sap.cloud.s4hana.examples/addressmgr/commands/**</include>
+      </includes>
+      <sources>
+        <includeModuleDirectory>false</includeModuleDirectory>
+        <fileSets>
+          <fileSet>
+            <outputDirectory>com.sap.cloud.s4hana.examples/addressmgr/commands</outputDirectory>
+            <excludes>
+              <exclude>target/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/config/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/datasource/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/models/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/util/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/views/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/resources/**</exclude>
+			  <exclude>src/main/java/com.sap.cloud.s4hana.examples/addressmgr/webapp/**</exclude>
+            </excludes>
+          </fileSet>
+        </fileSets>
+      </sources>
+    </moduleSet>
+  </moduleSets>
+</assembly>

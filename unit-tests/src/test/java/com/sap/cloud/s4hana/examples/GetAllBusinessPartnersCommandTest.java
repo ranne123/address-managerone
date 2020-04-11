@@ -38,7 +38,7 @@ public class GetAllBusinessPartnersCommandTest {
         mockUtil = new MockUtil();
         mockUtil.mockDefaults(); //mocks the locale ,tenant etc
         mockUtil.mockDestination("ErpQueryEndpoint", URI.create(""));
-        //Invalidate cache ahead of each test
+        //Invalidate cache ahead of each
         new GetAllBusinessPartnersCommand(null).getCache().invalidateAll();
         ;
     }

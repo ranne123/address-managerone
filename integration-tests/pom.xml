@@ -24,22 +24,24 @@
         <surefire.exclude/>
         <surefire.groups/>
         <surefire.excludedGroups/>
-        <surefire.maxMemorySize>1024m</surefire.maxMemorySize>
-        <surefire.maxPermSize>512m</surefire.maxPermSize>
+        <surefire.maxMemorySize>2048m</surefire.maxMemorySize>
+        <surefire.maxPermSize>256m</surefire.maxPermSize>
         <surefire.logLevel>info</surefire.logLevel>
-
-        <jacoco.destFile>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.destFile>
-        <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory>
+        <code.coverage.project.folder>${basedir}/../</code.coverage.project.folder>
+        <code.coverage.overall.data.folder>${project.build.directory}/target/aggregate.exec</code.coverage.overall.data.folder>
+        <jvmArgs></jvmArgs>
+        <!-- Static code analysis -->
+        <sonar.coverage.exclusions>**/application/config/*</sonar.coverage.exclusions>
+      <!--  <jacoco.destFile>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.destFile>
+        <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory> -->
     </properties>
-
-
     <dependencies>
-<dependency>
-    <groupId>com.sap.cloud.s4hana.frameworks</groupId>
-    <artifactId>hystrix</artifactId>
-    <version>2.1.2</version>
-    <scope>test</scope>
-</dependency>
+        <dependency>
+            <groupId>com.sap.cloud.s4hana.frameworks</groupId>
+            <artifactId>hystrix</artifactId>
+            <version>2.1.2</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.test</groupId>
             <artifactId>arquillian-test-api</artifactId>
@@ -55,7 +57,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.9.6</version>
+            <version>2.9.10</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -121,7 +123,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.6</version>
+            <version>2.9.10.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -140,9 +142,10 @@
 
             <groupId>com.sap.cloud.s4hana.examples</groupId>
             <artifactId>address-manager-application</artifactId>
-            <classifier>classes</classifier>
+           <classifier>classes</classifier>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
+
             <exclusions>
                 <exclusion>
                     <groupId>ch.qos.logback</groupId>
@@ -152,7 +155,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.22.0</version>
@@ -167,13 +170,13 @@
             <groupId>com.sap.cloud.s4hana</groupId>
             <artifactId>s4hana-all</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>com.sap.cloud.s4hana</groupId>
             <artifactId>testutil</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
+     <!--   <dependency>
             <groupId>com.sap.cloud.s4hana.quality</groupId>
             <artifactId>listeners-all</artifactId>
             <scope>test</scope>
@@ -183,7 +186,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -241,8 +244,124 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
+        <outputDirectory>${project.build.directory}/target-classes</outputDirectory>
+        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M4</version>
+                    <configuration>
+                        <forkCount>3</forkCount>
+                        <reuseForks>true</reuseForks>
+
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.4.0.905</version>
+                </plugin>
+            <!--    <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.3</version>
+
+                <executions>
+                    <execution>
+                        <id>coverage-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>coverage-report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>coverage-check</id>
+
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+
+                            <rules>
+
+                                <rule>
+                                    <element>CLASS</element>
+                                    <includes>
+                                        <include>com.sap.cloud.s4hana.examples.addressmgr.commands</include>
+                                    </includes>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>80%</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> -->
+             <!--   <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.5</version>
+                    <executions>
+                         prepare agent for measuring integration tests -
+                        <execution>
+                            <id>prepare-integration-tests</id>
+                            <phase>pre-integration-test</phase>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <propertyName>jaCoCoArgLine</propertyName>
+                                <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>post-integration-test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+
+
+
+                                <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.8</version>
+                </plugin> -->
+             <!--   <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.20.1</version>
+                </plugin> -->
+
+            </plugins>
+        </pluginManagement>
+
+
+      <plugins>
+          <!--    <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
@@ -271,11 +390,13 @@
                 </executions>
             </plugin>
 
-            <plugin>
+          <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>3.0.0-M4</version>
                 <configuration>
+
+
                     <argLine>@{argLine}
                         -Xmx${surefire.maxMemorySize}
                         -XX:MaxPermSize=${surefire.maxPermSize}
@@ -289,12 +410,14 @@
                     <excludes>
                         <exclude>${surefire.exclude}</exclude>
                     </excludes>
-                    <forkCount>${surefire.forkCount}</forkCount>
+                    <useSystemClassLoader>false</useSystemClassLoader>
+                    <useManifestOnlyJar>false</useManifestOnlyJar>
+                    <forkCount>3</forkCount>
                     <reuseForks>false</reuseForks>
                     <groups>${surefire.groups}</groups>
                     <excludedGroups>${surefire.excludedGroups}</excludedGroups>
                 </configuration>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -322,36 +445,57 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
+      <!--      <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M4</version>
+
                 <executions>
-                    <!--
+
+
                         Invokes both the integration-test and the verify goals of the
                         Failsafe Maven plugin
-                    -->
+
                     <execution>
+
                         <id>integration-tests</id>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <!--
-                                Skips integration tests if the value of skip.integration.tests
-                                property is true
-                            -->
+
+                            <useSystemClassLoader>false</useSystemClassLoader>
+                            <includes>
+                                <include>ITAddressServletTest.java</include>
+                            </includes>
+                            <testSourceDirectory>
+
+
+                                src/test/java/com/sap/cloud/s4hana/example
+
+
+                            </testSourceDirectory>
                             <skipTests>${surefire.skipTests}</skipTests>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>3.1.2</version>
                 <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
                     <execution>
                         <id>analyze</id>
                         <goals>
@@ -359,10 +503,242 @@
                         </goals>
                         <configuration>
                             <failOnWarning>true</failOnWarning>
+                            <ignoredUnusedDeclaredDependencies>
+                                <ignoredUnusedDeclaredDependency>org.slf4j:jcl-over-slf4j</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.slf4j:slf4j-simple</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.apache.openejb:arquillian-tomee-embedded</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.apache.openejb:tomee-embedded</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.apache.openejb:tomee-jaxrs</ignoredUnusedDeclaredDependency>
+
+                            </ignoredUnusedDeclaredDependencies>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
+
+
     </build>
+    <!-- Run unit tests with code coverage -->
+    <profiles>
+    <profile>
+        <id>unit-test</id>
+        <activation>
+            <file>
+                <exists>${basedir}/src/test</exists>
+            </file>
+        </activation>
+        <properties>
+            <testAgent></testAgent>
+        </properties>
+        <build>
+            <pluginManagement>
+                <plugins>
+               <!--     <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <executions>
+
+                            <execution>
+                                <id>report-aggregate</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>report-aggregate</goal>
+                                </goals>
+                                <configuration>
+
+
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>merge-results</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>merge</goal>
+                                </goals>
+                                <configuration>
+
+                                    <fileSets>
+                                        <fileSet>
+                                            <directory>${code.coverage.project.folder}</directory>
+                                            <includes>
+                                                <include>**/target/jacoco.exec</include>
+                                            </includes>
+                                        </fileSet>
+                                        <fileSet>
+
+                                        </fileSet>
+                                    </fileSets>
+
+                                </configuration>
+
+                            </execution>
+                        </executions>
+                    </plugin> -->
+                    <!-- Code Coverage
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <configuration>
+
+                            <excludes>
+                                <exclude>${sonar.coverage.exclusions}</exclude>
+                            </excludes>
+                        </configuration>
+                        <executions> -->
+
+                            <!-- Before running unit tests -->
+                      <!--      <execution>
+                                <id>preTest</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>${surefire.skipTests}</skip>
+                                    <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
+
+                                    <propertyName>testAgent</propertyName>
+                                </configuration>
+                            </execution> -->
+
+                        <!--     After running unit tests -->
+                        <!--    <execution>
+                                <id>postTest</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <configuration>
+                                    <fileSets>
+                                        <fileSet>
+                                            <directory>${code.coverage.project.folder}</directory>
+                                            <includes>
+                                                <include>${project.build.directory}/jacoco-unit.exec</include>
+                                            </includes>
+                                        </fileSet>
+                                    </fileSets>
+                                    <skip>${surefire.skipTests}</skip>
+                                 <dataFile>${code.coverage.overall.data.folder}/aggregate.exec</dataFile> -->
+                                    <!-- Sets the output directory for the code coverage report.-->
+                                <!--    <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin> -->
+
+                    <!-- Update SureFire (already bound to test phase)
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <argLine>@{argLine} -Xms256m -Xmx2048m</argLine>
+                           <argLine>@{testAgent} -Xms256m -Xmx2048m</argLine>
+                            <skipTests>${surefire.skipTests}</skipTests>
+                        </configuration>
+                    </plugin> -->
+                </plugins>
+            </pluginManagement>
+
+            <!-- Use in lifecycle -->
+            <plugins>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.8.5</version>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+        <!-- Run IT test with code coverage
+        <profile>
+            <id>integration-test</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/test</exists>
+                </file>
+            </activation>
+            <properties>
+                <itAgent></itAgent>
+            </properties>
+            <build>
+                <pluginManagement>
+                    <plugins> -->
+
+                        <!-- Code Coverage
+                        <plugin>
+                            <groupId>org.jacoco</groupId>
+                            <artifactId>jacoco-maven-plugin</artifactId>
+                            <configuration>
+                                <excludes>
+                                    <exclude>${sonar.coverage.exclusions}</exclude>
+                                </excludes>
+                            </configuration>
+                            <executions> -->
+
+                                <!-- Before running integration tests
+                                <execution>
+                                    <id>preIT</id>
+                                    <phase>pre-integration-test</phase>
+                                    <goals>
+                                        <goal>prepare-agent-integration</goal>
+                                    </goals>
+                                    <configuration>
+                                        <skip>${surefire.skipTests}</skip>
+                                        <destFile>${project.build.directory}/jacoco-it.exec</destFile>
+                                        <propertyName>itAgent</propertyName>
+                                    </configuration>
+                                </execution> -->
+
+                                <!-- After running integration tests
+                                <execution>
+                                    <id>postIT</id>
+                                    <phase>post-integration-test</phase>
+                                    <goals>
+                                        <goal>report-integration</goal>
+                                    </goals>
+                                    <configuration>
+                                        <skip>${surefire.skipTests}</skip>
+
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin> -->
+
+                        <!-- Use FailSafe to run integration tests
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <configuration>
+                                <argLine>@{itAgent} ${jvmArgs}</argLine>
+                                <skipTests>${surefire.skipTests}</skipTests>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <goals>
+                                        <goal>integration-test</goal>
+                                        <goal>verify</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+
+
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile> -->
+</profiles>
 </project>
