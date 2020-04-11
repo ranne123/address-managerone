@@ -15,11 +15,11 @@ steps:
 
 #Stage Specific Configurations
 stages:
-  staticCodeChecks:
+  configuration:
     findbugsExcludesFile: '' #Path to findbugs exclude file
     pmdExcludes: '' # List or ANT style patterns
 
-  integrationTests:
+  backendIntegrationTests:
     credentials:
       - alias: 'MOCK_SYSTEM'
         credentialId: 'MOCK_SYSTEM'
@@ -38,3 +38,4 @@ stages:
         appName: 'address-manager'
         manifest: 'manifest.yml'
         credentialsId: 'github'
+
