@@ -28,7 +28,7 @@
         <surefire.maxMemorySize>1024m</surefire.maxMemorySize>
         <surefire.logLevel>info</surefire.logLevel>
 
-        <jacoco.destFile>${project.build.directory}/coverage-reports/jacoco.exec</jacoco.destFile>
+        <jacoco.destFile>${project.build.directory}/jacoco.exec</jacoco.destFile>
         <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory>
     </properties>
 
@@ -99,7 +99,7 @@
 
     <build>
         <plugins>
-            <plugin>
+          <!--  <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
@@ -149,7 +149,7 @@
                     <groups>${surefire.groups}</groups>
                     <excludedGroups>${surefire.excludedGroups}</excludedGroups>
                 </configuration>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 </project>
