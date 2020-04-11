@@ -5,8 +5,8 @@ void call(Map params) {
   //access config
   echo "Current stage config: ${params.config}"
    
-  echo "Resolve dependencies ..."
-  mavenExecute script: this, goals: 'dependency:resolve -Dclassifer=classes'
+ // echo "Resolve dependencies ..."
+ // mavenExecute script: this, goals: 'dependency:resolve -Dclassifer=classes'
   //echo "Execute maven verify ..."
   // mavenExecute script: this, goals: 'verify'
    //execute mvn clean install 
