@@ -14,10 +14,10 @@ void call(Map params) {
   //echo "Executing the mvn clean install " 
  //  mavenExecute script: this, goals: 'clean install'
   
-  echo "Executing the maven failsafe plugin ..."
-  mavenExecute script: this, goals: 'failsafe:integration-test failsafe:verify'
+  echo "Executing the mvn clean verify  ..."
+  mavenExecute script: this, goals: 'clean verify'
   //execute original stage as defined in the template
-  params.originalStage()
+ // params.originalStage()
 
   
 
