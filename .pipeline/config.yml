@@ -38,5 +38,4 @@ stages:
         appName: 'address-manager'
         manifest: 'manifest.yml'
         credentialsId: 'github'
-© 2020 GitHub, Inc.
-© 2020 GitHub, Inc.
+
