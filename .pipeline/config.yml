@@ -15,7 +15,7 @@ steps:
 
 #Stage Specific Configurations
 stages:
-  staticCodeChecks:
+  configuration:
     findbugsExcludesFile: '' #Path to findbugs exclude file
     pmdExcludes: '' # List or ANT style patterns
 
