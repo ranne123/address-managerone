@@ -193,12 +193,12 @@
             <groupId>org.apache.tomee</groupId>
             <artifactId>arquillian-tomee-embedded</artifactId>
             <scope>test</scope>
-            <version>8.0.0</version>
+
         </dependency>
         <dependency>
             <groupId>org.apache.tomee</groupId>
             <artifactId>tomee-embedded</artifactId>
-            <version>8.0.0</version>
+
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -264,7 +264,7 @@
             <groupId>org.apache.tomee</groupId>
             <artifactId>tomee-jaxrs</artifactId>
             <scope>test</scope>
-            <version>8.0.0</version>
+
         </dependency>
     </dependencies>
 
