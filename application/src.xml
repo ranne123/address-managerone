@@ -2,6 +2,7 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
     <id>applicationclasses</id>
+
     <formats>
         <format>jar</format>
     </formats>
@@ -15,32 +16,22 @@
             <sources>
                 <includeModuleDirectory>false</includeModuleDirectory>
                 <fileSets>
-                    <fileSet>
-                        <outputDirectory>commands</outputDirectory>
 
-                        <directory>
-                            src/main/java/com/sap/cloud/s4hana/examples/addressmgr
-                        </directory>
+                    <fileSet>
+
                         <excludes>
+                            <exclude>**/target/*</exclude>
                           <!--  <exclude>*Servlet.java</exclude>
                             <exclude>config/**/*.*</exclude>
                             <exclude>datasource/**/*.*</exclude>
                             <exclude>models/**/*.*</exclude>
                             <exclude>util/**/*.*</exclude> -->
-                            <exclude>views/**/*.*</exclude>
-                            <exclude>webapp/**/*.*</exclude>
+                            <exclude>**/views/**/*.*</exclude>
+                            <exclude>**/webapp/**/*.*</exclude>
                         </excludes>
+
                     </fileSet>
-                    <fileSet>
-                        <directory>
-                            application
-                        </directory>
-                        <includes>
-                            <include>
-                                pom.xml
-                            </include>
-                        </includes>
-                    </fileSet>
+
                 </fileSets>
             </sources>
         </moduleSet>
