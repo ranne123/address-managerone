@@ -119,10 +119,7 @@
             <version>8.0-3</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>io.reactivex</groupId>
-            <artifactId>rxjava</artifactId>
-        </dependency>
+
 
     </dependencies>
 
