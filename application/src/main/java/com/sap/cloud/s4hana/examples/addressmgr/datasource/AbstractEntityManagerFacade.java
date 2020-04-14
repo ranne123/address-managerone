@@ -14,7 +14,7 @@ import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 
 public abstract class AbstractEntityManagerFacade {
 
-    private static final Logger logger = CloudLoggerFactory.getLogger(AbstractEntityManagerFacade.class);
+   // private static final Logger logger = CloudLoggerFactory.getLogger(AbstractEntityManagerFacade.class);
     public static final String BOOK_PROJECT_DATABASE = "my-postgresql1";
     private EntityManagerFactory entityManagerFactory;
 

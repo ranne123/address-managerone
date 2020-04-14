@@ -11,7 +11,7 @@ import com.sap.cloud.sdk.odatav2.connectivity.ODataUpdateResult;
 import com.sap.cloud.sdk.s4hana.connectivity.ErpCommand;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
-import org.apache.commons.configuration.AbstractConfiguration;
+
 import org.slf4j.Logger;
 import rx.schedulers.Schedulers;
 
@@ -19,7 +19,7 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class UpdateAddressCommand extends ErpCommand<Integer> {
-    private static final Logger logger = CloudLoggerFactory.getLogger(UpdateAddressCommand.class);
+ //   private static final Logger logger = CloudLoggerFactory.getLogger(UpdateAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final BusinessPartnerAddress addressToUpdate;

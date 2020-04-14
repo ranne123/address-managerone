@@ -15,7 +15,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.sap.cloud.s4hana.examples.addressmgr.datasource.GenericEntityManagerFacade;
-import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
+
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.frameworks.liquibase.SchemaPerTenantProvisioner;
 import static com.sap.cloud.s4hana.examples.addressmgr.util.TenantUtil.SCHEMA_PREFIX;

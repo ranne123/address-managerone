@@ -9,7 +9,7 @@ import com.sap.cloud.s4hana.examples.addressmgr.commands.CreateAddressCommand;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.DeleteAddressCommand;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.UpdateAddressCommand;
 import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
-import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
+
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
@@ -175,7 +175,6 @@ public class AddressServlet extends HttpServletAddressMgr {
     }
 
     private boolean validateIds(String businessPartnerId, String addressId) {
-        return (!Strings.isNullOrEmpty(businessPartnerId) && businessPartnerId.length() <= 10) &&
-                (!Strings.isNullOrEmpty(addressId) && addressId.length() <= 10);
+        return ((!Strings.isNullOrEmpty(businessPartnerId) && businessPartnerId.length() <= 10) &&    (!Strings.isNullOrEmpty(addressId) && addressId.length() <= 10));
     }
 }

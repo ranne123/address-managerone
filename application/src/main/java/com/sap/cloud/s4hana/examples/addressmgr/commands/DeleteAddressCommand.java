@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers;
 import javax.annotation.PreDestroy;
 
 public class DeleteAddressCommand extends ErpCommand<Integer> {
-    private static final Logger logger = CloudLoggerFactory.getLogger(DeleteAddressCommand.class);
+   // private static final Logger logger = CloudLoggerFactory.getLogger(DeleteAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final String businessPartnerId;

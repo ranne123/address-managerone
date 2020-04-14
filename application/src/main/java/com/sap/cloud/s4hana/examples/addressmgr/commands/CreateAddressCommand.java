@@ -5,7 +5,7 @@ import com.netflix.config.ConfigurationManager;
 import com.netflix.config.DynamicConfiguration;
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
-import org.apache.commons.configuration.AbstractConfiguration;
+
 import org.slf4j.Logger;
 
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
@@ -19,7 +19,7 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
-    private static final Logger logger = CloudLoggerFactory.getLogger(CreateAddressCommand.class);
+   // private static final Logger logger = CloudLoggerFactory.getLogger(CreateAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final BusinessPartnerAddress addressToCreate;
