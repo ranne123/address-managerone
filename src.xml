@@ -8,9 +8,11 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <moduleSets>
     <moduleSet>
+        <!-- use all the reactor projects -->
       <useAllReactorProjects>true</useAllReactorProjects>
       <includes>
         <include>com.sap.cloud.s4hana.examples:address-manager-application:war</include>
+
       </includes>
       <sources>
         <includeModuleDirectory>false</includeModuleDirectory>
@@ -22,7 +24,7 @@
                     src/main/java/com/sap/cloud/s4hana/examples/addressmgr
                  </directory>
                     <excludes>
-                        <exclude>*Servlet.java</exclude>
+                      <!--  <exclude>*Servlet.java</exclude> -->
                         <exclude>config/**/*.*</exclude>
                         <exclude>datasource/**/*.*</exclude>
                         <exclude>models/**/*.*</exclude>
@@ -30,13 +32,8 @@
                         <exclude>views/**/*.*</exclude>
                         <exclude>webapp/**/*.*</exclude>
                     </excludes>
-
-
-
-
-
-
           </fileSet>
+
         </fileSets>
       </sources>
     </moduleSet>
