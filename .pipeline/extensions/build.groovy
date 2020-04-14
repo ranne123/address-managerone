@@ -7,7 +7,7 @@ void call(Map params) {
    
   //install assemblies in jenkins local repo
   echo "install assemblies - integration-tests *******"
-  mavenExecute script: this, goals: 'clean assembly:single'
+  mavenExecute script: this, goals: 'assembly:single'
   //execute original stage as defined in the template
  params.originalStage()
 
