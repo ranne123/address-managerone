@@ -32,6 +32,9 @@
                         </excludes>
                     </fileSet>
                     <fileSet>
+                        <directory>
+                            application
+                        </directory>
                         <includes>
                             <include>
                                 pom.xml
