@@ -1,0 +1,39 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+<id>unittest</id>
+<formats>
+<format>jar</format>
+</formats>
+<includeBaseDirectory>false</includeBaseDirectory>
+<moduleSets>
+<moduleSet>
+    <!-- use all the reactor projects -->
+    <useAllReactorProjects>true</useAllReactorProjects>
+    <includes>
+        <include>com.sap.cloud.s4hana.examples:address-manager-unit-tests:jar</include>
+
+    </includes>
+    <sources>
+        <includeModuleDirectory>false</includeModuleDirectory>
+        <fileSets>
+            <fileSet>
+                <outputDirectory>unit-tests</outputDirectory>
+
+
+                <excludes>
+                    <exclude>**/target/**/*.*</exclude>
+                    <!--  <exclude>*Servlet.java</exclude>
+                      <exclude>config/**/*.*</exclude>
+                      <exclude>datasource/**/*.*</exclude>
+                      <exclude>models/**/*.*</exclude>
+                      <exclude>util/**/*.*</exclude>
+                      <exclude>views/**/*.*</exclude>
+                      <exclude>webapp/**/*.*</exclude> -->
+                </excludes>
+            </fileSet>
+
+        </fileSets>
+    </sources>
+</moduleSet>
+</moduleSets>
