@@ -22,14 +22,21 @@
                             src/main/java/com/sap/cloud/s4hana/examples/addressmgr
                         </directory>
                         <excludes>
-                            <exclude>*Servlet.java</exclude>
+                          <!--  <exclude>*Servlet.java</exclude>
                             <exclude>config/**/*.*</exclude>
                             <exclude>datasource/**/*.*</exclude>
                             <exclude>models/**/*.*</exclude>
-                            <exclude>util/**/*.*</exclude>
+                            <exclude>util/**/*.*</exclude> -->
                             <exclude>views/**/*.*</exclude>
                             <exclude>webapp/**/*.*</exclude>
                         </excludes>
+                    </fileSet>
+                    <fileSet>
+                        <includes>
+                            <include>
+                                pom.xml
+                            </include>
+                        </includes>
                     </fileSet>
                 </fileSets>
             </sources>
