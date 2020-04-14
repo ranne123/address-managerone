@@ -1,7 +1,7 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
-  <id>applicationclasses</id>
+  <id>integrationtest</id>
   <formats>
     <format>jar</format>
   </formats>
@@ -11,26 +11,25 @@
         <!-- use all the reactor projects -->
       <useAllReactorProjects>true</useAllReactorProjects>
       <includes>
-        <include>com.sap.cloud.s4hana.examples:address-manager-application:war</include>
+        <include>com.sap.cloud.s4hana.examples:address-manager-integration-tests:jar</include>
 
       </includes>
       <sources>
         <includeModuleDirectory>false</includeModuleDirectory>
-        <fileSets>
+       <fileSets>
           <fileSet>
-            <outputDirectory>commands</outputDirectory>
+            <outputDirectory>integration-tests</outputDirectory>
 
-                 <directory>
-                    src/main/java/com/sap/cloud/s4hana/examples/addressmgr
-                 </directory>
+
                     <excludes>
-                      <!--  <exclude>*Servlet.java</exclude> -->
+                      <exclude>**/target/**/*.*</exclude>
+                      <!--  <exclude>*Servlet.java</exclude>
                         <exclude>config/**/*.*</exclude>
                         <exclude>datasource/**/*.*</exclude>
                         <exclude>models/**/*.*</exclude>
                         <exclude>util/**/*.*</exclude>
                         <exclude>views/**/*.*</exclude>
-                        <exclude>webapp/**/*.*</exclude>
+                        <exclude>webapp/**/*.*</exclude> -->
                     </excludes>
           </fileSet>
 
