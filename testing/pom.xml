@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <code.coverage.project.folder>${basedir}/../</code.coverage.project.folder>
+        <code.coverage.project.folder>${project.basedir}/../</code.coverage.project.folder>
         <code.coverage.overall.data.folder>${basedir}/target/aggregate.exec</code.coverage.overall.data.folder>
     </properties>
     <artifactId>test-reporting</artifactId>
@@ -23,7 +23,7 @@
         </dependency>
 
 
-     <!--   <dependency>
+        <dependency>
             <groupId>com.sap.cloud.s4hana.examples</groupId>
             <artifactId>address-manager-integration-tests</artifactId>
             <classifier>jar-with-dependencies</classifier>
@@ -34,7 +34,7 @@
             <groupId>com.sap.cloud.s4hana.examples</groupId>
             <artifactId>address-manager-unit-tests</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency> -->
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -49,6 +49,24 @@
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
+                    </execution>
+                    <execution>
+                        <id>merge-results</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${code.coverage.project.folder}</directory>
+                                    <includes>
+                                        <include>**/target/jacoco.exec</include>
+                                    </includes>
+                                </fileSet>
+                            </fileSets>
+                            <destFile>${code.coverage.overall.data.folder}/aggregate.exec</destFile>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
