@@ -8,7 +8,8 @@ import com.google.gson.JsonParseException;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.CreateAddressCommand;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.DeleteAddressCommand;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.UpdateAddressCommand;
-import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServlet;
+import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
+import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
@@ -23,11 +24,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @WebServlet("/api/addresses")
-public class AddressServlet extends HttpServlet {
+public class AddressServlet extends HttpServletAddressMgr {
     private static final long serialVersionUID = 1L;
     private static final Logger logger = CloudLoggerFactory.getLogger(AddressServlet.class);
 
-    private final BusinessPartnerService service = new DefaultBusinessPartnerService();
+    private transient final BusinessPartnerService service = new DefaultBusinessPartnerService();
 
     @Override
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)

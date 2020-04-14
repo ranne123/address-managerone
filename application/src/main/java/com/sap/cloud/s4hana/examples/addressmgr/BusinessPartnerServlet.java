@@ -23,7 +23,7 @@ public class BusinessPartnerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final Logger logger = CloudLoggerFactory.getLogger(BusinessPartnerServlet.class);
 
-    private final BusinessPartnerService service = new DefaultBusinessPartnerService();
+    private transient final BusinessPartnerService service = new DefaultBusinessPartnerService();
 
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
