@@ -35,8 +35,8 @@
     <dependencies>
         <dependency>
             <groupId>com.sap.cloud.s4hana.examples</groupId>
-            <artifactId>address-manager-application-applicationclasses</artifactId>
-
+            <artifactId>address-manager-application</artifactId>
+          <classifier>applicationclasses</classifier>
             <version>1.0-SNAPSHOT</version>
 
            <exclusions>
