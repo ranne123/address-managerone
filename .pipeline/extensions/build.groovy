@@ -1,11 +1,7 @@
- import org.yaml.snakeyaml.Yaml
-import hudson.model.*
+ 
 void call(Map params) {
  
-
-def build = Thread.currentThread().executable
-Yaml yaml = new Yaml()
-Object data = yaml.load(new File("${build.workspace}/build/resources/main/application.yml").newDataInputStream())
+artifactPrepareVersion script: this, buildTool: 'maven', versioningType: library
 
   //print envrs variables
   echo "Priniting the env vars ..."
@@ -20,7 +16,7 @@ Object data = yaml.load(new File("${build.workspace}/build/resources/main/applic
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
-   def version = data['info']['release']['version']
+  
 println "Artifact version is $version"
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo"
