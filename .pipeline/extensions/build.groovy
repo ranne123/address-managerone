@@ -1,5 +1,11 @@
 void call(Map params) {
-  
+  import org.yaml.snakeyaml.Yaml
+import hudson.model.*
+
+def build = Thread.currentThread().executable
+Yaml yaml = new Yaml()
+Object data = yaml.load(new File("${build.workspace}/build/resources/main/application.yml").newDataInputStream())
+
   //print envrs variables
   echo "Priniting the env vars ..."
   
@@ -13,11 +19,12 @@ void call(Map params) {
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
-  
+   def version = data['info']['release']['version']
+println "Artifact version is $version"
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo"
    mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= ${project.build.directory}/address-manager-1.0-SNAPSHOT-integrationtest.jar  -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=integrationtest'
-  
+ 
   //install the aaplication jar into local repo
  mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= ${project.build.directory}/../application/target/address-manager-application-applicationclasses.jar -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=applicationclasses'
   
