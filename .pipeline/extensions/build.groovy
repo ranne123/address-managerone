@@ -13,23 +13,23 @@ void call(Map params) {
   echo "installing the assemblies ..into local repo"
    mavenExecute script: this, goals: 'assembly:single'
   org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
-le=target\address-manager-1.0-SNAPSHOT-integrationtest.jar  -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples
-       -DartifactId=address-manager-integration-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+le=target\address-manager-1.0-SNAPSHOT-integrationtest.jar  -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples \
+       -DartifactId=address-manager-integration-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier= \
 integrationtest'
   
   //install the aaplication jar into local repo
  mavenExecute script: this, goals: 'assembly:single'
   org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
-le=application\target\address-manager-application-applicationclasses.jar -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples
-       -DartifactId=address-manager-application -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+le=application\target\address-manager-application-applicationclasses.jar -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples \
+       -DartifactId=address-manager-application -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier= \
 applicationclasses'
   
   
   //install the unit-test jar into local repo
  mavenExecute script: this, goals: 'assembly:single'
   org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
-le=target\address-manager-1.0-SNAPSHOT-unittest.jar -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples
-       -DartifactId=unit-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+le=target\address-manager-1.0-SNAPSHOT-unittest.jar -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples \
+       -DartifactId=unit-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier= \
 unittest'
   
   
