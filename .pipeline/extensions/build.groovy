@@ -8,6 +8,32 @@ void call(Map params) {
   //install assemblies in jenkins local repo
   echo "install assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
+  
+  //install the assemblies into local maven repository (Docker based )
+  echo "installing the assemblies ..into local repo"
+   mavenExecute script: this, goals: 'assembly:single'
+  org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
+le=target\address-manager-1.0-SNAPSHOT-integrationtest.jar  -DgroupId=com.sap.cloud.s4hana.examples
+       -DartifactId=address-manager-integration-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+integrationtest'
+  
+  //install the aaplication jar into local repo
+ mavenExecute script: this, goals: 'assembly:single'
+  org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
+le=target\address-manager-1.0-SNAPSHOT-applicationclasses.jar  -DgroupId=com.sap.cloud.s4hana.examples
+       -DartifactId=address-manager-application -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+applicationclasses'
+  
+  
+  //install the unit-test jar into local repo
+ mavenExecute script: this, goals: 'assembly:single'
+  org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfi
+le=target\address-manager-1.0-SNAPSHOT-unittest.jar  -DgroupId=com.sap.cloud.s4hana.examples
+       -DartifactId=unit-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=
+unittest'
+  
+  
+  
   //execute original stage as defined in the template
  params.originalStage()
 
