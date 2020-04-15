@@ -10,7 +10,8 @@ backendIntegEnvVar= 'In the backend integration test stage'
 thirdEnvVar= 'THIRD_VAR'
 }
     stages {
-        stage('Build') { 
+        stage('build') { 
+            artifactPrepareVersion script: this, buildTool: 'maven', versioningType: library
             steps {
                 echo env.buildEnvVar1 
             }
