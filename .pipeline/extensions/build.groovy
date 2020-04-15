@@ -1,15 +1,15 @@
 void call(Map params) {
   //access stage name
-  echo "Start rama - Extension for stage: ${params.stageName}"
+  echo "Start - Extension for stage: ${params.stageName}"
 
   //access config
   echo "Current stage config: ${params.config}"
    
-  //install assemblies in jenkins local repo
-  echo "install assemblies - integration-tests *******"
-  mavenExecute script: this, goals: 'assembly:single'
+   //execute mvn clean install 
+   sh 'mvn clean install'
+   
   //execute original stage as defined in the template
- params.originalStage()
+  params.originalStage()
 
   
 
