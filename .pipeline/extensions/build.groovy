@@ -1,4 +1,9 @@
 void call(Map params) {
+  
+  //print envrs variables
+  echo "Priniting the env vars ..."
+  
+  sh "printenv"
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
 
