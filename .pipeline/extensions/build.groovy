@@ -1,6 +1,7 @@
-void call(Map params) {
-  import org.yaml.snakeyaml.Yaml
+ import org.yaml.snakeyaml.Yaml
 import hudson.model.*
+void call(Map params) {
+ 
 
 def build = Thread.currentThread().executable
 Yaml yaml = new Yaml()
