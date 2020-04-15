@@ -1,7 +1,7 @@
  
 void call(Map params) {
  
-artifactPrepareVersion script: this, buildTool: 'maven', versioningType: library
+
 
   //print envrs variables
   echo "Priniting the env vars ..."
