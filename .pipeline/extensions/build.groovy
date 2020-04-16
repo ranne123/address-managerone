@@ -12,15 +12,8 @@ void call(Map params) {
 
   //print envrs variables
  
-  def ret = sh (script: "$PWD", returnStatus:true)
-  echo "Priniting the env var ret ..."
- println ret
- echo "get the current directory..."
-// def DIRVar = binding.getVariables().get('PWD')
- 
- 
- echo "${PWD}"
- 
+ String currentDir = new File(".").getAbsolutePath()
+ echo "current directory is ${currentDir}"
  
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
