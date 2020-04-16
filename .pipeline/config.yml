@@ -6,8 +6,8 @@ general:
 #Steps Specific Configuration
 steps:
  artifactSetVersion:
-    script: this, 
-    buildTool: 'maven', 
+    script: this 
+    buildTool: 'maven' 
     versioningTemplate: 'rama123'
     
   mavenExecute:
