@@ -29,7 +29,7 @@ void call(Map params) {
   echo "Current stage config: ${params.config}"
    
  echo "print the git commitid ..."
- println  ${commitId}
+ println  ${gitCommitId}
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
@@ -39,7 +39,7 @@ void call(Map params) {
  //String pathToTargetDirectory = PathUtils.normalize(${PWD}, '/target')
 // echo "the app path is $pathToApplication "
   
- println "Artifact version is ${version}"
+ //println "Artifact version is ${version}"
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo"
    mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= ${project.build.directory}/address-manager-1.0-SNAPSHOT-integrationtest.jar  -Dversion=1.0-SNAPSHOT  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=1.0-SNAPSHOT -Dpackaging=jar -Dclassifier=integrationtest'
