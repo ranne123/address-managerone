@@ -41,9 +41,9 @@ void call(Map params) {
  //println "Artifact version is ${version}"
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo"
- mavenutils.installArtifact('address-manager')
- mavenutils.installArtifact('address-manager/application')
- mavenutils.installArtifact('address-manager/integration-tests')
+ MavenUtils.installMavenArtifacts(script, '$PWD/address-manager')
+ //mavenutils.installArtifact('address-manager/application')
+ //mavenutils.installArtifact('address-manager/integration-tests')
   
   
   //execute original stage as defined in the template
