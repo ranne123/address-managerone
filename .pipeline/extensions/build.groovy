@@ -18,8 +18,8 @@ void call(Map params) {
   mavenExecute script: this, goals: 'assembly:single'
  
  
- String pathToApplication = BuildToolEnvironment.instance.getApplicationPath($PWD)
-        String pathToTargetDirectory = PathUtils.normalize(pathToApplication, '/target')
+
+        String pathToTargetDirectory = PathUtils.normalize($PWD, '/target')
  echo "the app path is $pathToApplication "
   
 println "Artifact version is $version"
