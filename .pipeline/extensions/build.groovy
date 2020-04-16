@@ -1,4 +1,4 @@
- import package com.sap.cloud.sdk.s4hana.pipeline
+ import  com.sap.cloud.sdk.s4hana.pipeline
 void call(Map params) {
  
 
