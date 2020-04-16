@@ -14,8 +14,8 @@ void call(Map params) {
   echo "Priniting the env vars ..."
   
  //get the version 
- echo "get the artifact version ..."
- echo "${POM_VERSION}"
+ echo "get the current directory..."
+ echo "${PWD}"
  
   sh "printenv"
   //access stage name
@@ -30,7 +30,7 @@ void call(Map params) {
  
  
 
-        String pathToTargetDirectory = PathUtils.normalize($PWD, '/target')
+ String pathToTargetDirectory = PathUtils.normalize(${PWD}, '/target')
  echo "the app path is $pathToApplication "
   
 println "Artifact version is $version"
