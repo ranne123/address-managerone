@@ -14,6 +14,8 @@ void call(Map params) {
  echo "print the executing directory "
  println env.PWD
  
+ echo "printing job bame  "
+ println env.JOB_NAME
  
  
   //access stage name
