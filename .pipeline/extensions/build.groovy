@@ -1,4 +1,4 @@
- 
+ import package com.sap.cloud.sdk.s4hana.pipeline
 void call(Map params) {
  
 
@@ -8,7 +8,7 @@ void call(Map params) {
   
  //get the version 
  echo "get the artifact version ..."
- echo ${POM_VERSION} 
+ echo "${POM_VERSION}"
  
   sh "printenv"
   //access stage name
