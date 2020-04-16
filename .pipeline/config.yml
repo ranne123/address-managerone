@@ -1,6 +1,7 @@
 #Project Setup
 general:
   productiveBranch: 'master'
+  artifactSetVersion script: this, buildTool: 'maven', versioningTemplate: buildTool=maven:${version}-${timestamp}${commitId?"_"+commitId:""}
 
 #Steps Specific Configuration
 steps:
