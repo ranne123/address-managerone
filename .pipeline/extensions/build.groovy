@@ -14,7 +14,7 @@ void call(Map params) {
   echo "Priniting the env vars ..."
   sh "printenv"
  echo "get the current directory..."
- def DIRVar = build.getBuildVariables().get('PWD')
+ def DIRVar = binding.getBuildVariables().get('PWD')
  
  
  echo "${PWD}"
