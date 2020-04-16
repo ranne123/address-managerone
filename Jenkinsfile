@@ -11,7 +11,7 @@ thirdEnvVar= 'THIRD_VAR'
 }
     stages {
         stage('build') { 
-            artifactPrepareVersion script: this, buildTool: 'maven', versioningType: 'library'
+          //  artifactPrepareVersion script: this, buildTool: 'maven', versioningType: 'library'
             steps {
                 echo env.buildEnvVar1 
             }
