@@ -9,7 +9,7 @@ void call(Map params) {
  //get the version 
  echo "get the artifact version ..."
 echo " $POM_VERSION"
- groovy.lang.MissingPropertyException: No such property: PathUtils for class: groovy.lang.Binding
+ 
   sh "printenv"
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
