@@ -7,6 +7,7 @@ import com.sap.piper.ConfigurationMerger
 import com.sap.piper.Utils
 import com.sap.cloud.sdk.s4hana.pipeline.MavenUtils
 void call(Map params) {
+ artifactSetVersion script: this, buildTool: 'maven', versioningTemplate: buildTool=maven:"rama123"
  echo "print the shell env vars "
  sh  "printenv"
 
