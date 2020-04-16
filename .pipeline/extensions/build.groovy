@@ -11,6 +11,8 @@ void call(Map params) {
 
 
   //print envrs variables
+ echo "print the executing directory "
+ println env.PWD
  
  String currentDir = new File(".").getAbsolutePath()
  echo "current directory is ${currentDir}"
