@@ -41,7 +41,7 @@ void call(Map params) {
  //println "Artifact version is ${version}"
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo"
- MavenUtils.installMavenArtifacts(script, '$PWD/address-manager')
+ MavenUtils.installMavenArtifacts(this, '$PWD')
  //mavenutils.installArtifact('address-manager/application')
  //mavenutils.installArtifact('address-manager/integration-tests')
   
