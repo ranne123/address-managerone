@@ -16,6 +16,9 @@ steps:
 
 #Stage Specific Configurations
 stages:
+  build:
+    artifactSetVersion script: this, buildTool: 'maven', versioningTemplate: 'rama123'
+ 
   mavenExecuteStaticCodeChecks:
     spotBugsExcludeFilterFile: '' #Path to findbugs exclude file
     pmdMaxAllowedViolations: '' # List or ANT style patterns
