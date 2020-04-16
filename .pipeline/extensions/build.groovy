@@ -28,6 +28,8 @@ void call(Map params) {
   //access config
   echo "Current stage config: ${params.config}"
    
+ echo "print the timestamp ..."
+ sh "echo $timestamp"
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
