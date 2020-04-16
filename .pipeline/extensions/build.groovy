@@ -21,14 +21,7 @@ env.each{
 println it
 } 
 
- @NonCPS
-def printParams() {
-  env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-}
-printParams()
- env.each{
-println it
-}
+
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
 
