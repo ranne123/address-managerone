@@ -16,10 +16,10 @@ void call(Map params) {
  
  echo "printing job bame  "
  println env.JOB_NAME
- def env = System.getenv()
-env.each{
-println it
-} 
+// def env = System.getenv()
+//env.each{
+//println it
+//} 
 
 
   //access stage name
