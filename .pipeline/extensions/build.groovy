@@ -12,7 +12,9 @@ void call(Map params) {
 
   //print envrs variables
   echo "Priniting the env vars ..."
-  sh "printenv"
+  def ret[] = sh (script: "printenv", returnStatus:true)
+ 
+ println ret
  echo "get the current directory..."
 // def DIRVar = binding.getVariables().get('PWD')
  
