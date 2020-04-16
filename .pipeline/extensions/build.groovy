@@ -14,8 +14,7 @@ void call(Map params) {
  echo "print the executing directory "
  println env.PWD
  
- String currentDir = new File(".").getAbsolutePath()
- echo "current directory is ${currentDir}"
+ 
  
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
