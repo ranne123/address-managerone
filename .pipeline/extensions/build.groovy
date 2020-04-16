@@ -40,8 +40,10 @@ void call(Map params) {
   
  //println "Artifact version is ${version}"
   //install the assemblies into local maven repository (Docker based )
-  echo "installing the assemblies ..into local repo"
-sh "MavenUtils.installMavenArtifacts(this, $PWD)"
+  echo "installing the assemblies ..into local repo from unit-tests"
+sh "MavenUtils.installMavenArtifacts(this, $PWD/unit-tests)"
+  echo "installing the assemblies ..into local repo from integration-tests"
+ sh "MavenUtils.installMavenArtifacts(this, $PWD/integration-tests)"
  //mavenutils.installArtifact('address-manager/application')
  //mavenutils.installArtifact('address-manager/integration-tests')
   
