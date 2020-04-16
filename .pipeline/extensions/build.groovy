@@ -28,10 +28,7 @@ void call(Map params) {
   //access config
   echo "Current stage config: ${params.config}"
    
- //echo "print the git commitid ..."
- sh "echo $commitId"
- //echo the version
- sh "echo $version"
+ 
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
