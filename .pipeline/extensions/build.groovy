@@ -12,12 +12,15 @@ void call(Map params) {
 
   //print envrs variables
   echo "Priniting the env vars ..."
-  
- //get the version 
+  sh "printenv"
+ echo "get the current directory..."
+  def env = System.getenv()
+println(env['PWD'])
+ 
  echo "get the current directory..."
  echo "${PWD}"
  
-  sh "printenv"
+ 
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
 
