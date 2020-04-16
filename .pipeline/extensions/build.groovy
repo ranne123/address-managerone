@@ -16,7 +16,11 @@ void call(Map params) {
  
  echo "printing job bame  "
  println env.JOB_NAME
- 
+ @NonCPS
+def printParams() {
+  env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
+}
+printParams()
  env.each{
 println it
 }
