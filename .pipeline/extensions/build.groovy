@@ -17,7 +17,9 @@ void call(Map params) {
  echo "printing job bame  "
  println env.JOB_NAME
  
- 
+ env.each{
+println it
+}
   //access stage name
   echo "Start rama - Extension for stage: ${params.stageName}"
 
