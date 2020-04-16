@@ -16,6 +16,11 @@ void call(Map params) {
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
   mavenExecute script: this, goals: 'assembly:single'
+ 
+ 
+ String pathToApplication = BuildToolEnvironment.instance.getApplicationPath(basePath)
+        String pathToTargetDirectory = PathUtils.normalize(pathToApplication, '/target')
+ echo "the app path is $pathToApplication "
   
 println "Artifact version is $version"
   //install the assemblies into local maven repository (Docker based )
