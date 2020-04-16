@@ -1,7 +1,7 @@
 #Project Setup
 general:
   productiveBranch: 'master'
-  artifactSetVersion script: this, buildTool: 'maven', versioningTemplate: buildTool=maven:"rama123"
+  
 
 #Steps Specific Configuration
 steps:
