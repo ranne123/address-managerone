@@ -18,7 +18,7 @@ void call(Map params) {
   mavenExecute script: this, goals: 'assembly:single'
  
  
- String pathToApplication = BuildToolEnvironment.instance.getApplicationPath(basePath)
+ String pathToApplication = BuildToolEnvironment.instance.getApplicationPath($PWD)
         String pathToTargetDirectory = PathUtils.normalize(pathToApplication, '/target')
  echo "the app path is $pathToApplication "
   
