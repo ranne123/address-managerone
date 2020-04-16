@@ -8,7 +8,7 @@ import com.sap.piper.Utils
 import com.sap.cloud.sdk.s4hana.pipeline.MavenUtils
 void call(Map params) {
  echo "print the shell env vars "
-println sh  'printenv'
+ sh  'printenv'
 
   //print envrs variables
  echo "print the executing directory "
