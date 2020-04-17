@@ -241,7 +241,7 @@
                     </descriptors>
 
                 </configuration>
-                <executions>
+            <!--    <executions>
                     <execution>
                         <phase>compile</phase>
 <goals>
@@ -249,7 +249,7 @@
 </goals>
 
                     </execution>
-                </executions>
+                </executions> -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
