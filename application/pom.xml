@@ -178,7 +178,10 @@
                             <target>
                                 <copy file="${project.build.directory}/${project.build.finalName}.war"
                                       todir="${project.basedir}/integration-tests/target"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.war"
+                                      todir="${project.basedir}/unit-tests-tests/target"/>
                             </target>
+
                         </configuration>
                         <goals>
                             <goal>run</goal>
