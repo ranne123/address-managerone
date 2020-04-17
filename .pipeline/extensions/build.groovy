@@ -43,10 +43,10 @@ void call(Map params) {
   echo "installing the assemblies ..into local repo from unit-tests"
  echo "installing the assemblies ..into local repo"
  def localWorkspace = env.WORKSPACE
- def anotherFile = PathUtils.normalize(env.WORKSPACE,"address-manager-rama123-integrationtest.jar")
+ def integrationFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-integrationtest.jar")
  println anotherFile
- File artifactIntFile = new File("${localworkspace}/target/address-manager-rama123-integrationtest.jar")
-   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= artifactIntFile  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
+ //File artifactIntFile = new File("${localworkspace}/target/address-manager-rama123-integrationtest.jar")
+   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= integrationFile  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
  
   //install the aaplication jar into local repo
  //mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${localWorkspace}" + /application/target/address-manager-application-applicationclasses.jar" -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
