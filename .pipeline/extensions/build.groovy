@@ -54,7 +54,7 @@ void call(Map params) {
   
   
   //execute original stage as defined in the template
- //params.originalStage()
+ params.originalStage()
 
   
 
