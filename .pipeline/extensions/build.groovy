@@ -12,7 +12,7 @@ void call(Map params) {
 
   //print envrs variables
  echo "print the executing directory "
- println env.PWD
+ println env.WORKSPACE
  
  echo "printing job bame  "
  println env.JOB_NAME
