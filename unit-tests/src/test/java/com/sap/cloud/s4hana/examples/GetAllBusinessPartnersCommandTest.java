@@ -1,7 +1,4 @@
 package com.sap.cloud.s4hana.examples;
-
-;
-
 import com.google.common.collect.Lists;
 import com.sap.cloud.s4hana.examples.addressmgr.commands.GetAllBusinessPartnersCommand;
 import com.sap.cloud.sdk.odatav2.connectivity.ODataException;
