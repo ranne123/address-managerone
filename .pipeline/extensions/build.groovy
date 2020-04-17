@@ -31,7 +31,7 @@ void call(Map params) {
  
   //install assemblies in jenkins local repo
   echo "generate the  assemblies - integration-tests *******"
-  mavenExecute script: this, goals: 'assembly:single'
+  mavenExecute script: this, goals: 'package assembly:single'
  
  
 
