@@ -230,7 +230,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
-           
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
@@ -243,7 +243,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>test-compile</phase>
+                        <phase>compile</phase>
 <goals>
     <goal>single</goal>
 </goals>
