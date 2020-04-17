@@ -42,14 +42,14 @@ void call(Map params) {
   //install the assemblies into local maven repository (Docker based )
   echo "installing the assemblies ..into local repo from unit-tests"
  echo "installing the assemblies ..into local repo"
-   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= env.WORKSPACE/address-manager-rama123-integrationtest.jar  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
+   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${env.WORKSPACE}/address-manager-rama123-integrationtest.jar"  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
  
   //install the aaplication jar into local repo
- mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= env.WORKSPACE/application/target/address-manager-application-applicationclasses.jar -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
+ mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${env.WORKSPACE}/application/target/address-manager-application-applicationclasses.jar" -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
   
   
   //install the unit-test jar into local repo
- mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= env.WORKPSACE/address-manager-rama123-unittest.jar -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
+ mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${env.WORKPSACE}/address-manager-rama123-unittest.jar" -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
   
   
   
