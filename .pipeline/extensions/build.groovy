@@ -47,7 +47,7 @@ void call(Map params) {
  println integrationFile
  echo "file is ${integrationFile}"
  //File artifactIntFile = new File("${localworkspace}/target/address-manager-rama123-integrationtest.jar")
-   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + ${integrationFile} +  ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
+   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${integrationFile}" +  ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
  
  def applicationFile = PathUtils.normalize(env.WORKSPACE,"/application/target/address-manager-application-applicationclasses.jar")
  println applicationFile
