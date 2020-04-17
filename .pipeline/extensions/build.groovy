@@ -66,14 +66,7 @@ return this
   
   
   
-  //execute original stage as defined in the template
- params.originalStage()
-
-  
-
-  echo "End - Extension for stage: ${params.stageName}"
-}
-return this
+ 
 
   
   
