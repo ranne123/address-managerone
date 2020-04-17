@@ -132,6 +132,7 @@
                             <includes>
                                 <include>**/*Test.java</include>
                                 <include>
+
                                     **/com/sap/cloud/s4hana/examples/**/*.java
                                 </include>
                             </includes>
@@ -237,7 +238,17 @@
                         <descriptor>src.xml</descriptor>
                         <descriptor>unit-test-src.xml</descriptor>
                     </descriptors>
+
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>test-compile</phase>
+<goals>
+    <goal>single</goal>
+</goals>
+
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
