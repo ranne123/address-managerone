@@ -44,14 +44,17 @@ void call(Map params) {
  echo "installing the assemblies ..into local repo"
  def localWorkspace = env.WORKSPACE
  def integrationFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-integrationtest.jar")
- println anotherFile
+ println integrationFile
  //File artifactIntFile = new File("${localworkspace}/target/address-manager-rama123-integrationtest.jar")
    mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= integrationFile  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
  
+ def applicationFile = PathUtils.normalize(env.WORKSPACE,"/application/target/address-manager-application-applicationclasses.jar")
+ println applicationFile
   //install the aaplication jar into local repo
- //mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${localWorkspace}" + /application/target/address-manager-application-applicationclasses.jar" -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
+ //mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=applicationFile  -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
   
-  
+   def unittestFile = PathUtils.normalize(env.WORKSPACE,"target/application/target/address-manager-rama123-unittest.jar")
+ println unittestFile
   //install the unit-test jar into local repo
 // mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile= "${localWorkspace}" + /target/address-manager-rama123-unittest.jar" -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
   
