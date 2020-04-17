@@ -20,6 +20,7 @@
                     <fileSet>
 
                         <excludes>
+                            <exclude>**/integration-tests/*</exclude>
                             <exclude>**/target/*</exclude>
                           <!--  <exclude>*Servlet.java</exclude>
                             <exclude>config/**/*.*</exclude>
