@@ -19,7 +19,7 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
-   // private static final Logger logger = CloudLoggerFactory.getLogger(CreateAddressCommand.class);
+    // private static final Logger logger = CloudLoggerFactory.getLogger(CreateAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final BusinessPartnerAddress addressToCreate;
@@ -28,15 +28,16 @@ public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 CreateAddressCommand.class,
                 HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)
-                .withExecutionTimeoutEnabled(true))
+                        .withExecutionTimeoutEnabled(true)
+                        .withExecutionTimeoutInMilliseconds(1000000000))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                         .withAllowMaximumSizeToDivergeFromCoreSize(true)
                         .withMaxQueueSize(25)
                         .withQueueSizeRejectionThreshold(26)
                         .withMaximumSize(40)
                         .withCoreSize(1)
-        ));
-                      //  .withExecutionTimeoutInMilliseconds(1000000000)));
+                ));
+        //  .withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
         this.addressToCreate = addressToCreate;
@@ -51,7 +52,6 @@ public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
         Hystrix.reset();
         return addressCreated;
     }
-
 
 
     @PreDestroy
