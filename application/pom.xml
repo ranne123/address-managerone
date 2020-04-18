@@ -144,28 +144,9 @@
                 <version>3.2.3</version>
                 <configuration>
                     <attachClasses>true</attachClasses>
-
                 </configuration>
+            </plugin>
 
-            </plugin>
-            <!-- plugin for maven assembly -->
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src.xml</descriptor>
-                    </descriptors>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
 
             <plugin>
