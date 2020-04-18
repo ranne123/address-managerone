@@ -25,7 +25,7 @@ stages:
     spotBugsExcludeFilterFile: '' #Path to findbugs exclude file
     pmdMaxAllowedViolations: '' # List or ANT style patterns
 
-  backendIntegrationTests:
+ # backendIntegrationTests:
    # credentials:
     #  - alias: 'MOCK_SYSTEM'
     #    credentialId: 'MOCK_SYSTEM'
