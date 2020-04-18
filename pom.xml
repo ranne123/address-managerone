@@ -56,15 +56,7 @@
         <module>integration-tests</module>
         <module>testing</module>
     </modules>
-    <profiles>
-        <profile>
-            <id>integration-test</id>
-            <properties>
-                <skip.integration.tests>false</skip.integration.tests>
-                <skip.unit.tests>false</skip.unit.tests>
-            </properties>
-        </profile>
-    </profiles>
+
     <reporting>
         <plugins>
         <plugin>
@@ -96,6 +88,7 @@
                 <!-- 2.19.1 -->
                 <version>3.0.0-M4</version>
                 <configuration>
+                    <skipTests>${skip.unit.tests}</skipTests>
                     <!-- When using '@Category( MyUnitTest.class)': MyUnitTest</groups>-->
                     <!--   <skipTests>${skip.unit.tests}</skipTests>
                        <excludes>
@@ -123,6 +116,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <skipTests>${skip.integration.tests}</skipTests>
+                </configuration>
                 <!-- 2.18.1 -->
                 <version>3.0.0-M4</version>
                 <executions>
@@ -231,14 +227,14 @@
                 </dependencies>
             </plugin>
 
-         <!--  <plugin>
+          <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src.xml</descriptor>
                         <descriptor>unit-test-src.xml</descriptor>
-                        <descriptor>application.xml</descriptor>
+
                     </descriptors>
 
                 </configuration>
@@ -251,7 +247,7 @@
 
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
