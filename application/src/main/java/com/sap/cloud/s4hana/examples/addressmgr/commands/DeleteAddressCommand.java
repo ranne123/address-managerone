@@ -59,9 +59,9 @@ public class DeleteAddressCommand extends ErpCommand<Integer> {
         return oDataDeleteResult.getHttpStatusCode();
     }
 
-    @PreDestroy
+   /* @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();
         Hystrix.reset();
-    }
+    }*/
 }
