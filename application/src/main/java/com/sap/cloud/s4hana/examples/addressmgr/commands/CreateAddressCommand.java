@@ -54,7 +54,7 @@ public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
     }
 
 
-    @PreDestroy
+   /* @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();
         Hystrix.reset();
@@ -78,5 +78,5 @@ public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
