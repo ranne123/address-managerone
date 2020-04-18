@@ -231,17 +231,18 @@
                 </dependencies>
             </plugin>
 
-            <plugin>
+         <!--  <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src.xml</descriptor>
                         <descriptor>unit-test-src.xml</descriptor>
+                        <descriptor>application.xml</descriptor>
                     </descriptors>
 
                 </configuration>
-            <!--    <executions>
+               <executions>
                     <execution>
                         <phase>compile</phase>
 <goals>
@@ -249,8 +250,8 @@
 </goals>
 
                     </execution>
-                </executions> -->
-            </plugin>
+                </executions>
+            </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
