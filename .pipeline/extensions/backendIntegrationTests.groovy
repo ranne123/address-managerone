@@ -20,6 +20,9 @@ void call(Map params) {
  // echo "Executing the mvn clean verify  ..."
 //  mavenExecute script: this, goals: 'clean install -U -X'
   //execute original stage as defined in the template
+  //execute without testing module 
+  
+  mavenExecute script: this, goals: '-pl !testing -Dskip.unit-tests=true -Dskip-integration-tests=true'
  params.originalStage()
 
   
