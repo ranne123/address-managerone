@@ -77,9 +77,9 @@ public class GetAllBusinessPartnersCommand extends CachingErpCommand<List<Busine
         return Collections.emptyList();
     }
 
-    @PreDestroy
+    /*@PreDestroy
     public void shutdown() {
         Schedulers.shutdown();
         Hystrix.reset();
-    }
+    }*/
 }
