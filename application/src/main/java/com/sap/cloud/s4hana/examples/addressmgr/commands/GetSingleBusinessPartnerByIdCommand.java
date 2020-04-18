@@ -66,9 +66,9 @@ public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPart
         logger.warn("Fallback called because of exception:", getExecutionException());
         return BusinessPartner.builder().businessPartner(id).build();
     }
-    @PreDestroy
+   /* @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();
         Hystrix.reset();
-    }
+    }*/
 }
