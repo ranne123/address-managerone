@@ -59,25 +59,34 @@
 
     <reporting>
         <plugins>
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.5</version>
-            <configuration>
-                <excludes>
-                    <exclude>
-                        org/apache/tomee/jasper/*
-                    </exclude>
-                </excludes>
-            </configuration>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            org/apache/tomee/jasper/*
+                            com/sap/cloud/s4hana/examples/addressmgr/config/*
+                            com/sap/cloud/s4hana/examples/addressmgr/datasource/*
+                            com/sap/cloud/s4hana/examples/addressmgr/models/*
+                            com/sap/cloud/s4hana/examples/addressmgr/util/*
+                            com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet
+                            com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet
+                            com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.java
+                            com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.java
+                            com/sap/cloud/s4hana/examples/addressmgr/commands/GetSingleBusinessPartnerByIdCommand.java
+                        </exclude>
+                    </excludes>
+                </configuration>
 
-        </plugin>
+            </plugin>
         </plugins>
     </reporting>
     <build>
         <plugins>
             <!-- UNIT test 'mvn clean install' (optionally: -P dev) -->
-                 <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>3.0.0-M1</version>
@@ -139,7 +148,7 @@
                             </includes>
                             <!-- When using '@Categrory('MyIntegrationtest'): <groups>MyIntegrationTest</groups>-->
                             <reuseForks>true</reuseForks>
-                           <argLine>${itCoverageAgent}</argLine>
+                            <argLine>${itCoverageAgent}</argLine>
                         </configuration>
                     </execution>
                 </executions>
@@ -150,7 +159,7 @@
                 <version>0.8.5</version>
                 <configuration>
 
-                        <!--<destFile>${sonar.jacoco.itReportPath}</destFile>-->
+                    <!--<destFile>${sonar.jacoco.itReportPath}</destFile>-->
 
 
                     <excludes>
@@ -227,27 +236,27 @@
                 </dependencies>
             </plugin>
 
-       <!--   <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>src.xml</descriptor>
-                        <descriptor>unit-test-src.xml</descriptor>
+            <!--   <plugin>
+                     <artifactId>maven-assembly-plugin</artifactId>
+                     <version>3.2.0</version>
+                     <configuration>
+                         <descriptors>
+                             <descriptor>src.xml</descriptor>
+                             <descriptor>unit-test-src.xml</descriptor>
 
-                    </descriptors>
+                         </descriptors>
 
-                </configuration>
-               <executions>
-                    <execution>
-                        <phase>compile</phase>
-<goals>
-    <goal>single</goal>
-</goals>
+                     </configuration>
+                    <executions>
+                         <execution>
+                             <phase>compile</phase>
+     <goals>
+         <goal>single</goal>
+     </goals>
 
-                    </execution>
-                </executions>
-            </plugin> -->
+                         </execution>
+                     </executions>
+                 </plugin> -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
