@@ -11,7 +11,7 @@ void call(Map params) {
  sh  "printenv"
 
   //print envrs variables
- echo "print the executing directory "
+ //echo "print the executing directory "
  println env.WORKSPACE
  
  echo "printing job bame  "
@@ -30,8 +30,8 @@ void call(Map params) {
    
  
   //install assemblies in jenkins local repo
-  echo "generate the  assemblies - integration-tests *******"
-  mavenExecute script: this, goals: 'install -pl !integration-tests '
+  //echo "generate the  assemblies - integration-tests *******"
+ // mavenExecute script: this, goals: 'install -pl !integration-tests '
  
  
 
@@ -40,29 +40,29 @@ void call(Map params) {
   
  //println "Artifact version is ${version}"
   //install the assemblies into local maven repository (Docker based )
-  echo "installing the assemblies ..into local repo from unit-tests"
- echo "installing the assemblies ..into local repo"
- def localWorkspace = env.WORKSPACE
- def integrationFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-integrationtest.jar")
- println integrationFile
- echo "file is ${integrationFile}"
+ // echo "installing the assemblies ..into local repo from unit-tests"
+// echo "installing the assemblies ..into local repo"
+// def localWorkspace = env.WORKSPACE
+// def integrationFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-integrationtest.jar")
+// println integrationFile
+// echo "file is ${integrationFile}"
  //File artifactIntFile = new File("${localworkspace}/target/address-manager-rama123-integrationtest.jar")
-   mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${integrationFile}" +  ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
+//  mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${integrationFile}" +  ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples         -DartifactId=address-manager-integration-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=integrationtest'
  
- def applicationFile = PathUtils.normalize(env.WORKSPACE,"/application/target/address-manager-application-applicationclasses.jar")
- println applicationFile
+// def applicationFile = PathUtils.normalize(env.WORKSPACE,"/application/target/address-manager-application-applicationclasses.jar")
+// println applicationFile
   //install the aaplication jar into local repo
- mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile='+ "${applicationFile}" + ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
+// mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile='+ "${applicationFile}" + ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples -DartifactId=address-manager-application -Dversion=rama123 -Dpackaging=jar -Dclassifier=applicationclasses'
   
-   def unittestFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-unittest.jar")
- println unittestFile
+ //  def unittestFile = PathUtils.normalize(env.WORKSPACE,"target/address-manager-rama123-unittest.jar")
+ //println unittestFile
   //install the unit-test jar into local repo
-mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${unittestFile}" + ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
+//mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${unittestFile}" + ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
   
   
   
   //execute original stage as defined in the template
- //params.originalStage()
+ params.originalStage()
 
   
 
