@@ -14,7 +14,7 @@ import rx.schedulers.Schedulers;
 import javax.annotation.PreDestroy;
 
 public class DeleteAddressCommand extends ErpCommand<Integer> {
-   // private static final Logger logger = CloudLoggerFactory.getLogger(DeleteAddressCommand.class);
+    // private static final Logger logger = CloudLoggerFactory.getLogger(DeleteAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final String businessPartnerId;
@@ -25,7 +25,8 @@ public class DeleteAddressCommand extends ErpCommand<Integer> {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 DeleteAddressCommand.class,
                 HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)
-                .withExecutionTimeoutEnabled(true))
+                        .withExecutionTimeoutEnabled(true)
+                        .withExecutionTimeoutInMilliseconds(1000000000))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                         .withAllowMaximumSizeToDivergeFromCoreSize(true)
                         .withMaxQueueSize(25)
@@ -33,8 +34,8 @@ public class DeleteAddressCommand extends ErpCommand<Integer> {
                         .withMaximumSize(40)
                         .withCoreSize(1)
 
-        ));
-                        //withExecutionTimeoutInMilliseconds(1000000000)));
+                ));
+        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
         this.businessPartnerId = businessPartnerId;
@@ -57,6 +58,7 @@ public class DeleteAddressCommand extends ErpCommand<Integer> {
         Hystrix.reset();
         return oDataDeleteResult.getHttpStatusCode();
     }
+
     @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();

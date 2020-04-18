@@ -35,15 +35,17 @@ public class GetAllBusinessPartnersCommand extends CachingErpCommand<List<Busine
         super(HystrixUtil.getDefaultErpCommandSetter(
                 GetAllBusinessPartnersCommand.class,
                 HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)
-                .withExecutionTimeoutEnabled(true))
+                        .withExecutionTimeoutEnabled(true)
+                        .withExecutionTimeoutInMilliseconds(1000000000))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                         .withAllowMaximumSizeToDivergeFromCoreSize(true)
                         .withMaxQueueSize(25)
                         .withQueueSizeRejectionThreshold(26)
                         .withMaximumSize(40)
                         .withCoreSize(1)
-        ));
-                        //withExecutionTimeoutInMilliseconds(1000000000)));
+
+                ));
+        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
     }
@@ -74,6 +76,7 @@ public class GetAllBusinessPartnersCommand extends CachingErpCommand<List<Busine
         logger.warn("Fallback called because of exception:", getExecutionException());
         return Collections.emptyList();
     }
+
     @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();

@@ -19,7 +19,7 @@ import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class UpdateAddressCommand extends ErpCommand<Integer> {
- //   private static final Logger logger = CloudLoggerFactory.getLogger(UpdateAddressCommand.class);
+    //   private static final Logger logger = CloudLoggerFactory.getLogger(UpdateAddressCommand.class);
 
     private final BusinessPartnerService service;
     private final BusinessPartnerAddress addressToUpdate;
@@ -28,7 +28,8 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 UpdateAddressCommand.class,
                 HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)
-                .withExecutionTimeoutEnabled(true))
+                        .withExecutionTimeoutEnabled(true)
+                        .withExecutionTimeoutInMilliseconds(1000000000))
                 .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
 
                         .withAllowMaximumSizeToDivergeFromCoreSize(true)
@@ -36,8 +37,8 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
                         .withQueueSizeRejectionThreshold(26)
                         .withMaximumSize(40)
                         .withCoreSize(1)
-        ));
-                        //withExecutionTimeoutInMilliseconds(1000000000)));
+                ));
+        //withExecutionTimeoutInMilliseconds(1000000000)));
 
         this.service = service;
         this.addressToUpdate = addressToUpdate;
@@ -52,8 +53,6 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
         Hystrix.reset();
         return oDataUpdateResult.getHttpStatusCode();
     }
-
-
 
 
     @PreDestroy
@@ -79,6 +78,6 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
     }
-}
 }
