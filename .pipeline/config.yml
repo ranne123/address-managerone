@@ -26,9 +26,9 @@ stages:
     pmdMaxAllowedViolations: '' # List or ANT style patterns
 
   backendIntegrationTests:
-    credentials:
-      - alias: 'MOCK_SYSTEM'
-        credentialId: 'MOCK_SYSTEM'
+   # credentials:
+    #  - alias: 'MOCK_SYSTEM'
+    #    credentialId: 'MOCK_SYSTEM'
 
 #  s4SdkQualityChecks:
 #    jacocoExcludes:
