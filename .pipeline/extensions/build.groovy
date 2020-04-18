@@ -59,7 +59,7 @@ void call(Map params) {
   //install the unit-test jar into local repo
 //mavenExecute script: this, goals: 'org.apache.maven.plugins:maven-install-plugin:3.0.0-M1:install-file -Dfile=' + "${unittestFile}" + ' -Dversion=rama123  -DgroupId=com.sap.cloud.s4hana.examples   -DartifactId=unit-tests -Dversion=rama123 -Dpackaging=jar -Dclassifier=unittest'
   
-   mavenExecute script: this, goals: '-pl !testing -Dskip.unit-tests=true -Dskip-integration-tests=true'
+   mavenExecute script: this, goals: 'install -pl !testing -Dskip.unit-tests=true -Dskip-integration-tests=true'
   
   //execute original stage as defined in the template
  params.originalStage()
