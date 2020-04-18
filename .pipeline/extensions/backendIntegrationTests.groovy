@@ -22,7 +22,7 @@ void call(Map params) {
   //execute original stage as defined in the template
   //execute without testing module 
   
-  mavenExecute script: this, goals: '-pl !testing -Dskip.unit-tests=true -Dskip-integration-tests=true'
+ 
  params.originalStage()
 
   
