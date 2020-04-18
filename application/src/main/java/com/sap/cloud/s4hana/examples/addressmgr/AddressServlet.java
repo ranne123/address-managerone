@@ -175,6 +175,6 @@ public class AddressServlet extends HttpServletAddressMgr {
     }
 
     private boolean validateIds(String businessPartnerId, String addressId) {
-        return ((!Strings.isNullOrEmpty(businessPartnerId) && businessPartnerId.length() <= 10) &&    (!Strings.isNullOrEmpty(addressId) && addressId.length() <= 10));
+        return !Strings.isNullOrEmpty(businessPartnerId) && businessPartnerId.length() <= 10 &&    !Strings.isNullOrEmpty(addressId) && addressId.length() <= 10;
     }
 }
