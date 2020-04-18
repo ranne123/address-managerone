@@ -19,8 +19,8 @@
     </parent>
 
     <properties>
-        <surefire.skipTests>false</surefire.skipTests>
-        <surefire.forkCount>1</surefire.forkCount>
+<skip.integration.tests>true</skip.integration.tests>
+       <surefire.forkCount>1</surefire.forkCount>
         <surefire.include>*</surefire.include>
         <surefire.exclude/>
         <surefire.groups/>
@@ -30,6 +30,7 @@
 
         <jacoco.destFile>${project.build.directory}/jacoco.exec</jacoco.destFile>
         <jacoco.outputDirectory>${project.reporting.outputDirectory}/jacoco</jacoco.outputDirectory>
+
     </properties>
 
     <dependencies>
