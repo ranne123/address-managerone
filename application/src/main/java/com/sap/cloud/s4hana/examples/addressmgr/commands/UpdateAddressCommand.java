@@ -5,14 +5,14 @@ import com.netflix.config.ConfigurationManager;
 import com.netflix.config.DynamicConfiguration;
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
-import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
+//import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.frameworks.hystrix.HystrixUtil;
 import com.sap.cloud.sdk.odatav2.connectivity.ODataUpdateResult;
 import com.sap.cloud.sdk.s4hana.connectivity.ErpCommand;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 
-import org.slf4j.Logger;
+//import org.slf4j.Logger;
 import rx.schedulers.Schedulers;
 
 import javax.annotation.PreDestroy;
