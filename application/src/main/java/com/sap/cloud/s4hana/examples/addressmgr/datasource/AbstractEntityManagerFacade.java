@@ -1,6 +1,6 @@
 package com.sap.cloud.s4hana.examples.addressmgr.datasource;
 
-import org.slf4j.Logger;
+//import org.slf4j.Logger;
 import org.springframework.cloud.service.common.PostgresqlServiceInfo;
 
 import javax.persistence.EntityManager;
@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
+//import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 
 public abstract class AbstractEntityManagerFacade {
 
