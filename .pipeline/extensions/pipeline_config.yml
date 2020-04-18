@@ -22,7 +22,7 @@ stages:
   integrationTests:
     credentials:
       - alias: 'MOCK_SYSTEM'
-        credentialsId: 'MOCK_SYSTEM'
+        credentialId: 'MOCK_SYSTEM'
 
 #  s4SdkQualityChecks:
 #    jacocoExcludes:
