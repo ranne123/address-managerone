@@ -18,7 +18,7 @@
     </parent>
 
     <properties>
-
+        <skip.integration.tests>false</skip.integration.tests>
         <surefire.forkCount>1</surefire.forkCount>
         <surefire.include>*</surefire.include>
         <surefire.exclude/>
