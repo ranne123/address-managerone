@@ -25,10 +25,10 @@ stages:
     spotBugsExcludeFilterFile: '' #Path to findbugs exclude file
     pmdMaxAllowedViolations: '' # List or ANT style patterns
 
-  backendIntegrationTests:
-    credentials:
-      - alias: 'MOCK_SYSTEM'
-        credentialsId: 'MOCK_SYSTEM'
+ # backendIntegrationTests:
+   # credentials:
+    #  - alias: 'MOCK_SYSTEM'
+    #    credentialId: 'MOCK_SYSTEM'
 
 #  s4SdkQualityChecks:
 #    jacocoExcludes:
