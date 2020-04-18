@@ -1,8 +1,6 @@
 package com.sap.cloud.s4hana.examples.addressmgr.commands;
 
-import com.netflix.config.ConcurrentCompositeConfiguration;
-import com.netflix.config.ConfigurationManager;
-import com.netflix.config.DynamicConfiguration;
+
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
 
@@ -15,8 +13,7 @@ import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.Busin
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 import rx.schedulers.Schedulers;
 
-import javax.annotation.PreDestroy;
-import java.util.List;
+
 
 public class CreateAddressCommand extends ErpCommand<BusinessPartnerAddress> {
     // private static final Logger logger = CloudLoggerFactory.getLogger(CreateAddressCommand.class);
