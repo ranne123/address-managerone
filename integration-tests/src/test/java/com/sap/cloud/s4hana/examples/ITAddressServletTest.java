@@ -22,7 +22,7 @@ import java.util.Random;
 import static com.sap.cloud.s4hana.examples.BusinessPartnerServletTest.BUPA_ID;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static com.sap.cloud.s4hana.examples.BusinessPartnerServletTest.BUPA_ID;
+//import static com.sap.cloud.s4hana.examples.BusinessPartnerServletTest.BUPA_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 

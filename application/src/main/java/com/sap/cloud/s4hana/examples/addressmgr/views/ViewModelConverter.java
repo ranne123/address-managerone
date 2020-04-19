@@ -7,7 +7,7 @@ import java.util.List;
 import com.sap.cloud.s4hana.examples.addressmgr.models.Address;
 
 public class ViewModelConverter {
-    public static AddressView convertAddressToAddressView (com.sap.cloud.s4hana.examples.addressmgr.models.Address address) {
+    public static AddressView convertAddressToAddressView (Address address) {
 
         return new AddressView(address.getId(), address.getBusinessPartner(), address.getCityName(),
                 address.getCountry(), address.getHouseNumber(), address.getPostalCode(), address.getStreetName(), address.getStatus());

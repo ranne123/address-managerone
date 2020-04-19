@@ -1,5 +1,6 @@
 package com.sap.cloud.s4hana.examples.addressmgr;
 
+import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServletAddressMgr;
 import liquibase.exception.LiquibaseException;
 import org.hibernate.Session;
 import org.hibernate.internal.SessionImpl;
@@ -14,13 +15,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.sap.cloud.s4hana.examples.addressmgr.datasource.GenericEntityManagerFacade;
-import com.sap.cloud.s4hana.examples.addressmgr.util.HttpServlet;
+
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.frameworks.liquibase.SchemaPerTenantProvisioner;
 import static com.sap.cloud.s4hana.examples.addressmgr.util.TenantUtil.SCHEMA_PREFIX;
 
 @WebServlet("/api/callback/tenant/*")
-public class TenantProvisioningServlet extends HttpServlet {
+public class TenantProvisioningServlet extends HttpServletAddressMgr {
     private static final long serialVersionUID = 1L;
     private static final Logger logger = CloudLoggerFactory.getLogger(TenantProvisioningServlet.class);
     public static final int TENANT_PARAMETER_INDEX = 1;

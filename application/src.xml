@@ -1,44 +1,40 @@
 <assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
-<id>applicationclasses</id>
-<formats>
-<format>jar</format>
-</formats>
-<includeBaseDirectory>false</includeBaseDirectory>
-<moduleSets>
-<moduleSet>
-    <useAllReactorProjects>true</useAllReactorProjects>
-    <includes>
-        <include>com.sap.cloud.s4hana.examples:address-manager-application:war</include>
-    </includes>
-    <sources>
-        <includeModuleDirectory>false</includeModuleDirectory>
-        <fileSets>
-            <fileSet>
-                <outputDirectory>commands</outputDirectory>
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+    <id>applicationclasses</id>
 
-                <directory>
-                    src/main/java/com/sap/cloud/s4hana/examples/addressmgr
-                </directory>
-                <excludes>
-                    <exclude>*Servlet.java</exclude>
-                    <exclude>config/**/*.*</exclude>
-                    <exclude>datasource/**/*.*</exclude>
-                    <exclude>models/**/*.*</exclude>
-                    <exclude>util/**/*.*</exclude>
-                    <exclude>views/**/*.*</exclude>
-                    <exclude>webapp/**/*.*</exclude>
-                </excludes>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <moduleSets>
+        <moduleSet>
+            <useAllReactorProjects>true</useAllReactorProjects>
+            <includes>
+                <include>com.sap.cloud.s4hana.examples:address-manager-application:war</include>
+            </includes>
+            <sources>
+                <includeModuleDirectory>false</includeModuleDirectory>
+                <fileSets>
 
+                    <fileSet>
 
+                        <excludes>
+                            <exclude>**/integration-tests/*</exclude>
+                            <exclude>**/target/*</exclude>
+                          <!--  <exclude>*Servlet.java</exclude>
+                            <exclude>config/**/*.*</exclude>
+                            <exclude>datasource/**/*.*</exclude>
+                            <exclude>models/**/*.*</exclude>
+                            <exclude>util/**/*.*</exclude> -->
+                            <exclude>**/views/**/*.*</exclude>
+                            <exclude>**/webapp/**/*.*</exclude>
+                        </excludes>
 
+                    </fileSet>
 
-
-
-            </fileSet>
-        </fileSets>
-    </sources>
-</moduleSet>
-</moduleSets>
+                </fileSets>
+            </sources>
+        </moduleSet>
+    </moduleSets>
 </assembly>

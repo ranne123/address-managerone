@@ -9,53 +9,40 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <code.coverage.project.folder>${basedir}/../</code.coverage.project.folder>
+        <code.coverage.project.folder>${project.basedir}/../</code.coverage.project.folder>
         <code.coverage.overall.data.folder>${basedir}/target/aggregate.exec</code.coverage.overall.data.folder>
     </properties>
     <artifactId>test-reporting</artifactId>
     <!-- dependencies -->
-<dependencies>
-    <dependency>
-      <groupId>com.sap.cloud.s4hana.examples</groupId>
-        <artifactId>address-manager-application</artifactId>
-        <classifier>classes</classifier>
-        <version>1.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>com.sap.cloud.s4hana.examples</groupId>
+            <artifactId>address-manager-application</artifactId>
+            <classifier>classes</classifier>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId> com.sap.cloud.s4hana.examples</groupId>
-        <artifactId>address-manager-integration-tests</artifactId>
 
-        <version>1.0-SNAPSHOT</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId> com.sap.cloud.s4hana.examples</groupId>
-        <artifactId>address-manager-unit-tests</artifactId>
+        <dependency>
+            <groupId>com.sap.cloud.s4hana.examples</groupId>
+            <artifactId>address-manager-integration-tests</artifactId>
+         <!--  <classifier>integrationtest</classifier> -->
+            <version>1.0-SNAPSHOT</version>
 
-        <version>1.0-SNAPSHOT</version>
-        <scope>test</scope>
-    </dependency>
-</dependencies>
+        </dependency>
+        <dependency>
+            <groupId>com.sap.cloud.s4hana.examples</groupId>
+            <artifactId>address-manager-unit-tests</artifactId>
+        <!--   <classifier>unittest</classifier> -->
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <configuration>
-                    <!-- Jacoco prepare-agent builds some command-line params without -->
-                    <!-- which jacoco will not instrument. Hence it is important to add -->
-                    <!-- those command-line params here (${argLine} holds those params) -->
-                    <argLine>${argLine} -Xms256m -Xmx2048m</argLine>
-                    <forkCount>1</forkCount>
-                    <runOrder>random</runOrder>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
                 <executions>
                     <execution>
                         <id>report-aggregate</id>
@@ -84,29 +71,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.2</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>true</overWriteSnapshots>
-                            <excludeTransitive>true</excludeTransitive>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-
 
 </project>

@@ -14,13 +14,16 @@ void call(Map params) {
   //echo "Executing the mvn clean install " 
  //  mavenExecute script: this, goals: 'clean install -e -U -X'
   
-   echo "Executing the mvn dependency analyze  ..."
-  mavenExecute script: this, goals: '-pl integration-tests dependency:analyze'
+//   echo "Executing the mvn dependency analyze  ..."
+//  mavenExecute script: this, goals: '-pl integration-tests dependency:analyze'
   
-  echo "Executing the mvn clean verify  ..."
-  mavenExecute script: this, goals: 'clean install -U -X'
+ // echo "Executing the mvn clean verify  ..."
+//  mavenExecute script: this, goals: 'clean install -U -X'
   //execute original stage as defined in the template
- // params.originalStage()
+  //execute without testing module 
+  
+ 
+ params.originalStage()
 
   
 

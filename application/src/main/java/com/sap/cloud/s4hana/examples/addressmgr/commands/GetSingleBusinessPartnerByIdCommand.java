@@ -1,5 +1,7 @@
 package com.sap.cloud.s4hana.examples.addressmgr.commands;
 
+import com.netflix.hystrix.Hystrix;
+import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
 import com.sap.cloud.sdk.frameworks.hystrix.HystrixUtil;
 import com.sap.cloud.sdk.s4hana.connectivity.ErpCommand;
@@ -7,6 +9,9 @@ import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.Busin
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 import org.slf4j.Logger;
+import rx.schedulers.Schedulers;
+
+//import javax.annotation.PreDestroy;
 
 public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPartner> {
     private static final Logger logger = CloudLoggerFactory.getLogger(GetSingleBusinessPartnerByIdCommand.class);
@@ -17,7 +22,15 @@ public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPart
     public GetSingleBusinessPartnerByIdCommand(final BusinessPartnerService service, final String id) {
         super(HystrixUtil.getDefaultErpCommandSetter(
                 GetSingleBusinessPartnerByIdCommand.class,
-                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)));
+                HystrixUtil.getDefaultErpCommandProperties().withExecutionTimeoutEnabled(false)
+                .withExecutionTimeoutEnabled(true))
+                .andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
+                        .withAllowMaximumSizeToDivergeFromCoreSize(true)
+                        .withMaxQueueSize(25)
+                        .withQueueSizeRejectionThreshold(26)
+                        .withMaximumSize(40)
+                        .withCoreSize(1)
+        ));
                         //withExecutionTimeoutInMilliseconds(100000000)));
 
         this.service = service;
@@ -43,6 +56,8 @@ public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPart
                                 BusinessPartnerAddress.STREET_NAME,
                                 BusinessPartnerAddress.HOUSE_NUMBER))
                 .execute();
+        Schedulers.shutdown();
+        Hystrix.reset();
         return businessPartner;
     }
 
@@ -51,4 +66,9 @@ public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPart
         logger.warn("Fallback called because of exception:", getExecutionException());
         return BusinessPartner.builder().businessPartner(id).build();
     }
+   /* @PreDestroy
+    public void shutdown() {
+        Schedulers.shutdown();
+        Hystrix.reset();
+    }*/
 }
