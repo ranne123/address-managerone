@@ -36,7 +36,7 @@ stages:
       - '**/com/sap/cloud/s4hana/examples/addressmgr/datasource/*'
       - '**/com/sap/cloud/s4hana/examples/addressmgr/models/*'
       - '**/com/sap/cloud/s4hana/examples/addressmgr/util/TenantUtil.*'
-      - '**/com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/LocalAddressServlet.*'
       - '**/com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet.*'
       - '**/com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.*'
       - '**/com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.*'
