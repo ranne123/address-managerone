@@ -16,6 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.servlet.http.HttpServletResponse;
 import java.net.URL;
 import java.util.Random;
 
@@ -26,48 +27,52 @@ import static io.restassured.RestAssured.when;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 
-@RunWith( Arquillian.class )
+@RunWith(Arquillian.class)
 
-public class ITAddressServletTest
-{
+public class ITAddressServletTest {
     private static final MockUtil mockUtil = new MockUtil();
     private static final String CREATE_BODY_TEMPLATE =
             "{\n" +
-            "  \"BusinessPartner\": \"{bupaId}\",\n" +
-            "  \"CityName\": \"Potsdam\",\n" +
-            "  \"Country\": \"DE\",\n" +
-            "  \"HouseNumber\": \"{houseNumber}\",\n" +
-            "  \"PostalCode\": \"14469\",\n" +
-            "  \"StreetName\": \"Konrad-Zuse-Ring\"\n" +
-            "}";
+                    "  \"BusinessPartner\": \"{bupaId}\",\n" +
+                    "  \"CityName\": \"Potsdam\",\n" +
+                    "  \"Country\": \"DE\",\n" +
+                    "  \"HouseNumber\": \"{houseNumber}\",\n" +
+                    "  \"PostalCode\": \"14469\",\n" +
+                    "  \"StreetName\": \"Konrad-Zuse-Ring\"\n" +
+                    "}";
     private static final String UPDATE_BODY_TEMPLATE =
             "{\n" +
-            "  \"CityName\": \"Potsdam\",\n" +
-            "  \"Country\": \"DE\",\n" +
-            "  \"HouseNumber\": \"{houseNumber}\",\n" +
-            "  \"PostalCode\": \"14469\",\n" +
-            "  \"StreetName\": \"Konrad-Zuse-Ring\"\n" +
-            "}";
+                    "  \"CityName\": \"Potsdam\",\n" +
+                    "  \"Country\": \"DE\",\n" +
+                    "  \"HouseNumber\": \"{houseNumber}\",\n" +
+                    "  \"PostalCode\": \"14469\",\n" +
+                    "  \"StreetName\": \"Konrad-Zuse-Ring\"\n" +
+                    "}";
+    private static final String INVALIDJSON_BODY_TEMPLATE =
+            "{\n" +
+                    "  \"CityName\": \"Potsdam\",\n" +
+                    "  \"Country\": \"DE\",\n" +
+                    "  \"HouseNumber\" \"{houseNumber}\",\n" +
+                    "  \"PostalCode\": \"14469\",\n" +
+                    "  \"StreetName\": \"Konrad-Zuse-Ring\"\n" +
+                    "}";
 
     @ArquillianResource
     private URL baseUrl;
 
     @Deployment
-    public static WebArchive createDeployment()
-    {
+    public static WebArchive createDeployment() {
         return TestUtil.createDeployment(AddressServlet.class);
     }
 
     @BeforeClass
-    public static void beforeClass()
-    {
+    public static void beforeClass() {
         mockUtil.mockDefaults();
         mockUtil.mockErpDestination();
     }
 
     @Before
-    public void before()
-    {
+    public void before() {
         RestAssured.baseURI = baseUrl.toExternalForm();
     }
 
@@ -85,6 +90,7 @@ public class ITAddressServletTest
     /**
      * Creates a new address via the servlet, validates response with RestAssured, and
      * returns ID of new address.
+     *
      * @param houseNumber Value to set for property HouseNumber
      * @return Value of property AddressID of newly created instance
      */
@@ -94,14 +100,14 @@ public class ITAddressServletTest
                         .replace("{bupaId}", BUPA_ID)
                         .replace("{houseNumber}", houseNumber)
                 )
-        .when()
+                .when()
                 .post("/api/addresses")
-        .then()
+                .then()
                 .statusCode(201)
                 .contentType(ContentType.JSON)
                 .body("BusinessPartner", equalTo(BUPA_ID))
                 .body("AddressID", not(isEmptyOrNullString()))
-        .extract()
+                .extract()
                 .path("AddressID");
     }
 
@@ -115,7 +121,7 @@ public class ITAddressServletTest
                 .delete("/api/addresses?businessPartnerId={bupaId}&addressId={addressId}",
                         BUPA_ID,
                         addressId)
-        .then()
+                .then()
                 .statusCode(204);
 
         // Verify just deleted address cannot be found anymore
@@ -129,11 +135,11 @@ public class ITAddressServletTest
 
         given()
                 .body(UPDATE_BODY_TEMPLATE.replace("{houseNumber}", "100"))
-        .when()
+                .when()
                 .patch("/api/addresses?businessPartnerId={bupaId}&addressId={addressId}",
                         BUPA_ID,
                         addressId)
-        .then()
+                .then()
                 .statusCode(204);
 
         // Verify that address contains new value also when retrieved again
@@ -141,6 +147,34 @@ public class ITAddressServletTest
         assertThat(addressUpdated.getHouseNumber()).isEqualTo("100");
     }
 
+    @Test
+    public void InvalidJsonBody() throws ODataException {
+        final String houseNumber = String.valueOf(new Random().nextInt(100));
+        final String newAddressId = createAddress(houseNumber);
+
+         given()
+                .body(INVALIDJSON_BODY_TEMPLATE
+                        .replace("{bupaId}", BUPA_ID)
+                        .replace("{houseNumber}", houseNumber)
+                )
+                .when()
+                .post("/api/addresses")
+                .then()
+                .statusCode(HttpServletResponse.SC_BAD_REQUEST);
+    }
+    @Test
+    public void testInvalidDelete() throws ODataException {
+        // Create address to delete afterwards
+        final String addressId = createAddress("10");
+
+        // Delete the address
+        when()
+                .delete("/api/addresses?businessPartnerId={bupaId}&addressId={addressId}",
+                        BUPA_ID,
+                        "200")
+                .then()
+                 .statusCode(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+    }
     private BusinessPartnerAddress getAddress(final String bupaId, final String addressId) {
         return new GetAddressCommand(bupaId, addressId).execute();
     }
