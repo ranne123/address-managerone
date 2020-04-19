@@ -139,13 +139,28 @@
                         </goals>
                         <configuration>
                             <skipTests>${skip.integration.tests}</skipTests>
+
                             <includes>
                                 <include>**/*Test.java</include>
                                 <include>
 
                                     **/com/sap/cloud/s4hana/examples/**/*.java
                                 </include>
+
                             </includes>
+                            <excludes>
+                                <exclude>
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/config/*.*
+                                   **/com/sap/cloud/s4hana/examples/addressmgr/datasource/*.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/models/*.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/util/TenantUtil.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.*
+                                    **/com/sap/cloud/s4hana/examples/addressmgr/commands/GetSingleBusinessPartnerByIdCommand.*
+                                </exclude>
+                            </excludes>
                             <!-- When using '@Categrory('MyIntegrationtest'): <groups>MyIntegrationTest</groups>-->
                             <reuseForks>true</reuseForks>
                             <argLine>${itCoverageAgent}</argLine>
