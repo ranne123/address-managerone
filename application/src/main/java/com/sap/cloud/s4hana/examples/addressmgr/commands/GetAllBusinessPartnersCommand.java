@@ -14,7 +14,7 @@ import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 import org.slf4j.Logger;
 import rx.schedulers.Schedulers;
 
-import javax.annotation.PreDestroy;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
