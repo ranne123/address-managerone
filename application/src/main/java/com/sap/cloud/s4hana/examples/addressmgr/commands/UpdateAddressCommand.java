@@ -1,8 +1,8 @@
 package com.sap.cloud.s4hana.examples.addressmgr.commands;
 
-import com.netflix.config.ConcurrentCompositeConfiguration;
-import com.netflix.config.ConfigurationManager;
-import com.netflix.config.DynamicConfiguration;
+//import com.netflix.config.ConcurrentCompositeConfiguration;
+//import com.netflix.config.ConfigurationManager;
+//import com.netflix.config.DynamicConfiguration;
 import com.netflix.hystrix.Hystrix;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
 //import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
@@ -15,8 +15,8 @@ import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 //import org.slf4j.Logger;
 import rx.schedulers.Schedulers;
 
-import javax.annotation.PreDestroy;
-import java.util.List;
+//import javax.annotation.PreDestroy;
+//import java.util.List;
 
 public class UpdateAddressCommand extends ErpCommand<Integer> {
     //   private static final Logger logger = CloudLoggerFactory.getLogger(UpdateAddressCommand.class);
