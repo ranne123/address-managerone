@@ -55,7 +55,7 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
     }
 
 
-    @PreDestroy
+   /* @PreDestroy
     public void shutdown() {
         Schedulers.shutdown();
         Hystrix.reset();
@@ -79,5 +79,5 @@ public class UpdateAddressCommand extends ErpCommand<Integer> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
