@@ -67,15 +67,15 @@
                     <excludes>
                         <exclude>
                             org/apache/tomee/jasper/*
-                            com/sap/cloud/s4hana/examples/addressmgr/config/*
-                            com/sap/cloud/s4hana/examples/addressmgr/datasource/*
-                            com/sap/cloud/s4hana/examples/addressmgr/models/*
-                            com/sap/cloud/s4hana/examples/addressmgr/util/*
-                            com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet
-                            com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet
-                            com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.java
-                            com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.java
-                            com/sap/cloud/s4hana/examples/addressmgr/commands/GetSingleBusinessPartnerByIdCommand.java
+                            com/sap/cloud/s4hana/examples/addressmgr/config/*.*
+                            com/sap/cloud/s4hana/examples/addressmgr/datasource/*.*
+                            com/sap/cloud/s4hana/examples/addressmgr/models/*.*
+                            com/sap/cloud/s4hana/examples/addressmgr/util/TenantUtil.*
+                            com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet.*
+                            com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet.*
+                            com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.*
+                            com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.*
+                            com/sap/cloud/s4hana/examples/addressmgr/commands/GetSingleBusinessPartnerByIdCommand.*
                         </exclude>
                     </excludes>
                 </configuration>
