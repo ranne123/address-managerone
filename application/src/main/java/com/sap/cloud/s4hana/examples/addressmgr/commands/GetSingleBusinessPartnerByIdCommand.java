@@ -11,7 +11,7 @@ import com.sap.cloud.sdk.s4hana.datamodel.odata.services.BusinessPartnerService;
 import org.slf4j.Logger;
 import rx.schedulers.Schedulers;
 
-import javax.annotation.PreDestroy;
+//import javax.annotation.PreDestroy;
 
 public class GetSingleBusinessPartnerByIdCommand extends ErpCommand<BusinessPartner> {
     private static final Logger logger = CloudLoggerFactory.getLogger(GetSingleBusinessPartnerByIdCommand.class);
