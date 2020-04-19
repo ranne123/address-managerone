@@ -30,9 +30,17 @@ stages:
     #  - alias: 'MOCK_SYSTEM'
     #    credentialId: 'MOCK_SYSTEM'
 
-#  s4SdkQualityChecks:
-#    jacocoExcludes:
-#      - ''
+  s4SdkQualityChecks:
+    jacocoExcludes:
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/config/*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/datasource/*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/models/*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/util/TenantUtil.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/views/LocalAddressServlet.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/TenantProvisioningServlet.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/views/ViewModelConverter.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/views/AddressView.*'
+      - '**/com/sap/cloud/s4hana/examples/addressmgr/commands/GetSingleBusinessPartnerByIdCommand.*'
 #    nonErpDestinations:
 #      - ''
 
